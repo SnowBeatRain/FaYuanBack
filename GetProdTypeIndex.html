@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>产品类型列表</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/depart-account.css" />
+    <link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .ProImg {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="order-manager" class="content">
+        <!-- <ul>
+            <li>
+                <input type="text" class="form-control search" id="orderSearch" placeholder="关键词搜索(商品名、简介)">
+            </li>
+            <li>
+                <select class="form-control status" id="order-manager-place">
+                    <option value="-1">全部</option>
+                    <option value="0">中文</option>
+                    <option value="1">英文</option>
+                </select>
+            </li>
+            <li>
+                <button type="button" class="ask-button" onclick="KeySearch()">查询</button>
+            </li>
+            <li>
+                <button type="button" class="reset-button" onclick="ResetOrderIndex()">重置</button>
+            </li> -->
+            <button class="btn btn-primary btn-lg" data-toggle="modal" onclick="addModal()" data-target="#sendGoods">添加</button>
+        <!-- </ul> -->
+        <!-- 未发货 -->
+        <table class="table table-bordered table-hover" id="NoRderTable">
+            <thead>
+                <tr style="height:50px;background-color:#EAEAEA;">
+                    <th>类型中文标题</th>
+                    <th>类型英文标题</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div class="modal fade" id="sendGoods" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-body addr">
+                        <h3>类型</h3>
+                        <div>
+                            <label>类型中文标题</label>
+                            <input type="text" class="form-control" id="chineseTitle" />
+                        </div>
+                        <div>
+                            <label>类型英文标题</label>
+                            <input type="text" class="form-control" id="englistTitle" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary blocka blocka1" onclick="addSave()">确认</button>
+                        <button type="button" class="btn btn-primary blocka blocka2" onclick="editSave()">保存</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
+        <div class="tcdPageCode"></div>
+    </div>
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/xcConfirm.js"></script>
+
+<script src="js/jquery.page.js"></script>
+<script src="js/gloab.js"></script>
+<script src="js/GetProdTypeIndex.js"></script>
+
+
+</html>

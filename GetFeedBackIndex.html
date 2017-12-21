@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>意见反馈</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
+    <link rel="stylesheet" href="css/depart-account.css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .isDeal {
+            font-size: 13px;
+            padding: 5px 10px;
+            background-color: #666;
+            border: 1px solid #666;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .noDeal {
+            font-size: 13px;
+            padding: 5px 10px;
+            background-color: #63AEFF;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .delete_btn {
+            font-size: 13px;
+            padding: 5px 10px;
+            background-color: #fff;
+            border: 1px solid #63AEFF;
+            color: #63AEFF;
+            border-radius: 5px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <!--意见反馈-->
+    <div id="verify-manager" class="content">
+        <table class="table table-bordered table-hover" id="NoRderTable">
+            <thead>
+                <tr style="height:50px;background-color:#EAEAEA;">
+                    <th>意见</th>
+                    <th>反馈人</th>
+                    <th>创建时间</th>
+                    <th>是否处理</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        <div class="modal fade" id="sendGoods" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-body addr">
+                        <h3>类型</h3>
+                        <div>
+                            <label>建议内容</label>
+                            <textarea type="text" readonly class="form-control" id="content"></textarea>
+                        </div>
+                        <div>
+                            <label>建议人</label>
+                            <input type="text" readonly class="form-control" id="people" />
+                        </div>
+                        <div style="position: relative;">
+                            <label style="position: absolute;left:0;">是否处理</label>
+                            <input type="radio" name="deal" value="1">是&nbsp;&nbsp;
+                            <input type="radio" name="deal" value="0">否
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary blocka">确认</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
+    </div>
+
+    <div class="tcdPageCode"></div>
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/xcConfirm.js"></script>
+<script src="js/gloab.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/feedbacklist.js"></script>
+
+</html>

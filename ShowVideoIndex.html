@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>视频列表</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/depart-account.css" />
+    <link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .ProImg {
+            height: 200px;
+            width: 200px;
+        }
+
+        .smallBox {
+            margin-left: 85px;
+            position: relative;
+        }
+
+        .smallBox img {
+            height: 100px;
+            width: 100px;
+            margin-left: -150px;
+        }
+
+        .smallBox input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100px;
+            width: 100px;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="order-manager" class="content">
+        <ul>
+            <li>
+                <input type="text" class="form-control search" id="orderSearch" placeholder="关键词搜索">
+            </li>
+            <li>
+                <button type="button" class="ask-button" onclick="KeySearch()">查询</button>
+            </li>
+            <li>
+                <button type="button" class="reset-button" onclick="ResetOrderIndex()">重置</button>
+            </li>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" onclick="addModal()" data-target="#sendGoods">添加</button>
+
+        </ul>
+        <!-- 未发货 -->
+        <table class="table table-bordered table-hover" id="NoRderTable">
+            <thead>
+                <tr style="height:50px;background-color:#EAEAEA;">
+                    <th>图片</th>
+                    <th>标题</th>
+                    <th>中英文类型</th>
+                    <th>跳转地址</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="modal fade" id="sendGoods" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-body addr">
+                        <h3>视频</h3>
+                        <div>
+                            <label>视频主标题</label>
+                            <input type="text" class="form-control" id="Title" />
+                        </div>
+                        <div>
+                            <label>视频副标题</label>
+                            <input type="text" class="form-control" id="SubTitle" />
+                        </div>
+                        <div style="position: relative;line-height:100px;">
+                            <label style="position: absolute;left:0;width:85px">视频图片</label>
+                            <section class="smallBox">
+                                <img src="image/tu.png" class="upImg upImg1" src="image/tu.png" alt="">
+                                <input type="file" class="upImg_small" onchange="upSmallImg()" />
+                            </section>
+                        </div>
+                        <div>
+                            <label>中英文类型</label>
+                            <select class="form-control IsEnglish">
+                                <option value="0">中文</option>
+                                <option value="1">英文</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>跳转视频地址</label>
+                            
+                            <input type="text" class="form-control" id="VideoUrl" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary blocka blocka1">确认</button>
+                        <button type="button" class="btn btn-primary blocka blocka2">保存</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
+        <div class="tcdPageCode"></div>
+    </div>
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/xcConfirm.js"></script>
+<script src="layer/layer.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/gloab.js"></script>
+<script src="js/ShowVideoIndex.js"></script>
+
+
+</html>

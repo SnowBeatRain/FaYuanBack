@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>商品添加</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/depart-account.css" />
+    <link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .bigBox {
+            width: 100%;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .left_box {
+            float: left;
+            width: 30%;
+            background-color: #F5F6F7;
+            margin: 10px;
+            padding: 10px;
+            min-height: 520px;
+        }
+
+        .baiduEdit {
+            cursor: pointer;
+            color: #fff;
+            padding: 5px;
+            background-color: #63AEFF;
+            border-color: #63AEFF;
+            border: 1px solid #63AEFF;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .right_box {
+            float: left;
+            width: 30%;
+            background-color: #F5F6F7;
+            margin: 10px;
+            padding: 10px;
+            min-height: 520px;
+
+        }
+
+        .right_box>div>span {
+            display: block;
+        }
+
+        .img_box {
+            margin-top: 20px;
+        }
+
+        .img_box span,
+        .right_box span {
+            /* font-size: 18px; */
+            font-weight: bold;
+        }
+
+        .img_box>p {
+            position: relative;
+            display: inline-block;
+        }
+
+        .right_box>div>p {
+            position: relative;
+            display: inline-block;
+        }
+
+        .right_box>div>p input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100px;
+            width: 100px;
+            opacity: 0;
+        }
+
+        .img_box>p>input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100px;
+            width: 100px;
+            opacity: 0;
+        }
+
+        .right_box>div>p .upImg {
+            height: 100px;
+            width: 100px;
+
+        }
+
+        .img_box>p .upImg {
+            height: 100px;
+            width: 100px;
+        }
+
+        .right_box>div>p .guanbi {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            display: none;
+        }
+
+        .img_box>p .guanbi {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            display: none;
+        }
+
+        .foot_box {
+            margin: 0 20px;
+            padding: 0 20px;
+            width: 60%;
+            text-align: center
+        }
+
+        .foot_box button {
+            cursor: pointer;
+            height: 35px;
+            color: #fff;
+            width: 70px;
+            background-color: #63AEFF;
+            border-color: #63AEFF;
+            border: 1px solid #63AEFF;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .detailFooter button {
+            cursor: pointer;
+            height: 35px;
+            color: #fff;
+            width: 70px;
+            background-color: #63AEFF;
+            border-color: #63AEFF;
+            border: 1px solid #63AEFF;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .showIntro,
+        .showVideoUrl {
+            color: #63AEFF
+        }
+    </style>
+</head>
+
+<body>
+    <div id="productHandle" class="content">
+        <div class="bigBox">
+            <div class="left_box">
+                <div>
+                    <label for="">设备名</label>
+                    <input type="text" class="form-control FullName" placeholder="请输入设备名">
+                </div>
+                <div>
+                    <label for="">设备名简写</label>
+                    <input type="text" class="form-control Name" placeholder="请输入设备名简写">
+                </div>
+                <div>
+                    <label for="">设备批次号</label>
+                    <input type="text" class="form-control Batch" placeholder="请输入设备批次号">
+                </div>
+                <div class="img_box">
+                    <span>缩略图:</span>
+                    <p>
+                        <input type="file" class="upImg_small" onchange="upSmallImg()">
+                        <img class="upImg upImg1" src="image/tu.png" alt="">
+                        <img class="guanbi guanbi1" onclick="guanbi1()" src="image/guanbi.png" alt="">
+                    </p>
+                </div>
+                <div class="img_box">
+                    <span>详情图:</span>
+                    <p>
+                        <input type="file" class="upImg_big" onchange="upBigImg()">
+                        <img class="upImg upImg2" src="image/tu.png" alt="">
+                        <img class="guanbi guanbi2" onclick="guanbi2()" src="image/guanbi.png" alt="">
+                    </p>
+                </div>
+            </div>
+            <div class="right_box">
+                <div>
+                    <span>用药说明:</span>
+                    <input type="file" class="upIntro" style="display:inline-block;margin:10px 0;" onchange="upIntro()">
+                    <a class="showIntro" target="_blank" href="">说明文件</a>
+                </div>
+                <div>
+                    <span>视频教程:</span>
+                    <input type="file" class="upVideoUrl" style="display:inline-block;margin:10px 0;" onchange="upVideoUrl()">
+                    <a class="showVideoUrl" target="_blank" href="">视频文件</a>
+                </div>
+                <div>
+                    <span>视频封面:</span>
+                    <p style="margin:10px 0;">
+                        <input type="file" class="upVideoCoverImage" onchange="upVideoCoverImage()">
+                        <img class="upImg upImg5" src="image/tu.png" alt="">
+                        <img class="guanbi guanbi5" onclick="guanbi3()" src="image/guanbi.png" alt="">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="foot_box" style="">
+            <button onclick="savePro()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/xcConfirm.js"></script>
+    <script src="layer/layer.js"></script>    
+    <script src="js/gloab.js"></script>
+</body>
+<script src="js/equipmentEdit.js"></script>
+
+</html>
