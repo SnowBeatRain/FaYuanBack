@@ -1,7 +1,8 @@
 var mainurl = "http://192.168.1.106/HaiDaFilter/"
+
 /*以下是存储cookie的方法*/
 function setCookie(name, value, time) {
-    var strsec = getsec(name);
+    var strsec = getsec(time);
     var exp = new Date();
     exp.setTime(exp.getTime() + strsec * 1);
     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
@@ -30,15 +31,6 @@ function getCookie(name) {
         return null;
 }
 /*存储结束*/
-function delCookie(name)
-{
-    var exp = new Date();
-    exp.setTime(exp.getTime() - 1);
-    var cval=getCookie(name);
-    if(cval!=null)
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
-}
-
 
 $(".centerbox").css({
     "min-height": $(window).height() - 90
@@ -49,25 +41,4 @@ $("#myiframe").css({
 
 xhmsq=function(xhr){xhr.setRequestHeader('SdkVersion', '1');xhr.setRequestHeader('Authorization',getCookie('token'))};//这里设置header
 
-var token = getCookie("token");
-function Click(e){
-	var id = $(e).parents("tr").attr("id");
-	setCookie("ID",id,"d30");
-}
-var id = getCookie("ID");
 
-if(location.href.indexOf("login.html")<0)
-{
-	if(token == null){
-		window.parent.location.href="login.html";
-	}
-}
-
-function lgAgain(){
-	window.parent.location.href="login.html";
-}
-
-
-// 百度编辑器内容
-var detail1 = ""
-var detail2 = ""

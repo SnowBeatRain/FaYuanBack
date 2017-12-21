@@ -4,58 +4,34 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
-	<!-- <link rel="stylesheet" href="css/simplePagination.css" /> -->
-	<link rel="stylesheet" href="css/depart-account.css" />
-	
+	<link rel="stylesheet" href="css/simplePagination.css" />
 	<link href="css/base.css" rel="stylesheet" type="text/css" />
 	<link href="css/index.css" rel="stylesheet" type="text/css" />
 	<title>管理员管理</title>
-	<style>
-		.edit_btn {
-			font-size: 13px;
-			padding: 5px 10px;
-			background-color: #63AEFF;
-			border: 1px solid #63AEFF;
-			color: #fff;
-			border-radius: 5px;
-		}
-	</style>
 </head>
 
 <body>
 	<div class="paddingbox">
-		<button class=" btn-lg" data-toggle="modal" data-target="#myModal" onclick="addmanage()">新增管理员</button>
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="addmanage()">新增管理员</button>
 		<!-- 模态框添加（Modal） -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">管理员管理</h4>
+						<h4 class="modal-title" id="myModalLabel">账号（角色）管理</h4>
 					</div>
 					<div class="modal-body addr">
-						<div>
-							<label>账号：</label>
-							<input class="form-control" type="text" id="Name">
-						</div>
-						<div>
-							<label>密码：</label>
-							<input class="form-control" type="password" autocomplete="off" id="Password">
-						</div>
+						<div><label>账号：</label><input class="form-control" type="text" id="Name"></div>
+						<div><label>密码：</label><input class="form-control" type="password"  autocomplete="off" id="Password"></div>
 						<div>
 							<label>角色：</label>
 							<select class="form-control" id="role">
 							</select>
 						</div>
-						<div class="none">
-							<label>是否锁定：</label>
-							<select name="" id="IsLock" class="form-control">
-								<option value="true">是</option>
-								<option value="false">否</option>								
-							</select>
-						</div>
+						<div class="none"><label>是否锁定：</label><input type="checkbox" id="IsLock"></div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -80,24 +56,21 @@
 				</tr>
 			</thead>
 			<tbody>
-
+				
 			</tbody>
 		</table>
 		<!-- 分页 -->
-		<!-- <footer class="footer_first">
+		<footer class="footer_first">
 			<div class="pagination-holder clearfix">
 				<div id="fenghui-pagination" class="pagination">
 				</div>
 			</div>
-		</footer> -->
-		<div class="tcdPageCode"></div>
-		<!-- 分页 -->
+		</footer> 
+		<!-- 分页 --> 
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<!-- <script src="js/jquery.simplePagination.js"></script> -->
-	<script src="js/jquery.page.js"></script>
-	
+	<script src="js/jquery.simplePagination.js"></script>
 	<script src="js/jQuery.md5.js"></script>
 	<script src="js/gloab.js"></script>
 	<script src="js/manage.js"></script>

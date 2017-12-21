@@ -1,6 +1,3 @@
-*{
-	font-family: "微软雅黑";
-}
 html , body{
 	height: 100%;
 	width: 100%;
@@ -21,7 +18,7 @@ html , body{
 .cont{
 	width: 100%;
     height: 100%;
-    background: url(../image/bj.png);
+    background: url(../image/bg.jpg);
     -webkit-background-size: 100% 100%;
             background-size: 100% 100%;
     min-width: 1100px;
@@ -35,7 +32,7 @@ html , body{
     border-radius: 15px;
     box-shadow: 0 0 10px #666;
     position: absolute;
-    top: 20%;
+    top: 28%;
     right: 15%;
 	}
 .cont .form h1{
@@ -81,18 +78,18 @@ html , body{
 	margin-bottom: 20px;
 	}
 #username{
-	/* background:#fff url(../image/login2.png) 15px center  no-repeat; */
+	background:#fff url(../image/user.png) 15px center  no-repeat
 	}
 #pasword{
-	/* background:#fff url(../image/pass2.png) 15px no-repeat; */
+	background:#fff url(../image/password.png) 15px no-repeat;
 	}
 .cont .form dl input:hover,.cont .form dl input:focus{
-	border:2px solid #63AEFF;
+	border:2px solid #3CF;
 	}
 .cont .form form ul .button{
 	width:400px;
 	height:55px;
-	background:#63AEFF;
+	background:#ff5a61;
 	color:#fff;
 	font-family:"方正黑体简体";
 	border-radius:8px;
@@ -125,7 +122,7 @@ footer p{
 
 
 .header {
-    background: #5C9EE5;
+    background: rgb(243,79,51);
     height: 30px;
     overflow: hidden;
     width: 100%;
@@ -133,35 +130,27 @@ footer p{
 }
 
 .dl-log {
+    color: #c1d5ec;
     float: right;
-    padding: 6px 16px 0 0;
+    padding: 10px 16px 0 0;
 }
 
 .dl-log-quit {
-    color: #FFFFFF;
-    padding-left: 4px;
-    cursor: pointer;
-    margin-right: 7px;
-}
-.dl-quit-img{
-	display: inline-block;
-    cursor: pointer;
-    width: 14px;
-    height: 12px;
-    margin-top: -2px;
+    color: #c1d5ec;
+    padding-left: 8px;
 }
 .dl-main-nav {
     background-position: center -30px;
     height: 40px;
     overflow: hidden;
     position: relative;
-    background: -moz-linear-gradient(	left, #63AEFF 0%, #63AEFF 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#63AEFF), color-stop(100%,#63AEFF));
-    background: -webkit-linear-gradient(	left, #63AEFF 0%,#63AEFF 100%);
-    background: -o-linear-gradient(	left, #63AEFF 0%,#63AEFF 100%);
-    background: -ms-linear-gradient(	left, #63AEFF 0%,#63AEFF 100%);
-    background: linear-gradient(to right, #63AEFF 0%,#63AEFF 100%);
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#63AEFF', endColorstr='#63AEFF',GradientType=0 );
+    background: -moz-linear-gradient(	left, rgb(255,97,70) 0%, rgb(255,97,70) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgb(255,97,70)), color-stop(100%,rgb(255,97,70)));
+    background: -webkit-linear-gradient(	left, rgb(255,97,70) 0%,rgb(255,97,70) 100%);
+    background: -o-linear-gradient(	left, rgb(255,97,70) 0%,#414da7 100%);
+    background: -ms-linear-gradient(	left, rgb(255,97,70) 0%,rgb(255,97,70) 100%);
+    background: linear-gradient(to right, rgb(255,97,70) 0%,rgb(255,97,70) 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgb(255,97,70)', endColorstr='rgb(255,97,70)',GradientType=0 );
 }
 
 .nav-list .nav-item {
@@ -208,14 +197,14 @@ li {
     line-height: 22px;
 }
 .dl-second-nav {
-    background-color: #faf5f5;
+    background-color: #e8e9ee;
     float: left;
     position: relative;
-    width:15%;
+    width:10%;
     min-height:inherit;
 }
 .nvbar{
-	background: #faf5f5;
+	background: #e8e9ee;
 	width: 100%;
 	overflow: hidden;
 	height:34px;
@@ -223,7 +212,7 @@ li {
 }
 .box-right{
 	float:left;
-	width:85%;
+	width:90%;
 	min-height:inherit;
 	position: relative;
 }
@@ -232,14 +221,13 @@ li {
 	
 }
 .nvbar li,.nvbar li i{
-	  /*background: url(../image/T1SLHBXaXmXXXF.Nbe-140-120.gif) no-repeat;*/
+	  background: url(../image/T1SLHBXaXmXXXF.Nbe-140-120.gif) no-repeat;
 }
 
 
 .nvbar li.white{
-	 /*background-position: 0 -26px;
-      z-index: 2;*/
-     background: #fff;
+	 background-position: 0 -26px;
+      z-index: 2;
 	
 }
 
@@ -248,46 +236,33 @@ li {
     cursor: pointer;
     float: left;
     height: 21px;
-    /*margin-right: -12px;*/
+    margin-right: -12px;
    /* overflow: hidden;*/
     position: relative;
-    /*width:144px;*/
-   width: 115px;
+    width:144px;
     z-index: 1;
     background-position:1px -1px;
     position: relative;
     padding: 3px 0 23px 31px;
     margin-top: 10px;
-    border-radius: 6px;
 }
 
 .nvbar li a{
-	/*color: #263e74;*/
-	
-	color: #262626;
+	color: #263e74;
 }
 .nvbar li i{
-	/*background-position: 0 -80px;*/
-	background: url(../image/over.png)no-repeat;
+	background-position: 0 -80px;
     cursor: pointer;
     display: block;
-    /*height: 13px;*/
-   	height: 20px;
+    height: 13px;
     overflow: hidden;
     position: absolute;
-    /*right:22px;*/
-   right: 5px;
+    right:22px;
     text-decoration: none;
     text-indent: -99px;
-    /*top: 9px;*/
-    /*width: 13px;*/
-   top: 5px;
-   width: 20px;
-   opacity: 0.6;
+    top: 9px;
+    width: 13px;
 
-}
-.nvbar li i:hover{
-	opacity: 1;
 }
 .table th {
     background-color: #eaeaea;
@@ -297,37 +272,17 @@ li {
 	font-size: 13px;
 	color: #333333;
 	border-top-left-radius: 4px;
-	padding-left: 10px;
-	text-align: center;
 }
 .table td, .table th {
     padding-bottom: 4px;
     padding-top: 8px;
-	padding-left: 10px;
-	text-align: center;
-	
 }
 .btn-lg{
 	margin-bottom: 30px;
-	background-color: #337ab7;
-	border: 1px solid #337ab7;
-	color: #FFFFFF;
-	float: right;
 }
-.dl-log .form-control{
-	width: calc(100% - 70px);
+.form-control{
+	width: 150px;
 	display: inline-block;
-	border: none;
-}
-.paddingbox .form-control{
-	width: calc(100% - 85px);
-	display: inline-block;
-	border: none;
-}
-#sendGoods .form-control{
-	width: calc(100% - 85px);
-	display: inline-block;
-	border: none;
 }
 .paddint-bottom-20{
 	padding-bottom: 20px;
@@ -468,23 +423,21 @@ input.search{
 	min-height:150px;
 }
 
-
+.addr input{
+	border: 1px solid #CCCCCC;
+	padding: 7px;
+	width: 200px;
+	
+}
 .addr label{
 	display: inline-block;
 	width:80px;
 	color: #333;
 	font-weight: normal;
 }
-/* 模态框 */
-.modal-body{
-	text-align: center;
-	padding: 20px 0;
+.modal-body>div{
+	margin: 20px 0;
 }
-.modal-body div{
-	border: 2px solid #efefef;
-	margin: 20px 20%;
-}
-
 .active{
 	color: red;
 }
@@ -732,7 +685,7 @@ font-size:20px;
 	vertical-align: middle;
 }
 .miantable li a{
-	border: 1px solid #004444;
+	/*border: 1px solid #004444;*/
 	width:130px;
 	display: inline-block;
 	border-radius: 6px;
@@ -788,22 +741,22 @@ font-size:20px;
 	text-align: center;
 }
 .cazing a{
-	color: #63AEFF;
+	padding: 0 30px;
+	color: #0088cc;
 	font-size: 20px;
-    padding-right: 10px;
 }
 .cazing a.jueedit,.cazing a.domuy{
 	color: #fff;
 	padding: 5px 13px;
-	/*border-radius:4px;*/
+	border-radius:4px;
 	font-size: 12px;
 }
 .cazing a.jueedit{
 	margin-right: 10px;
-	background: #63AEFF;
+	background: #5bb75b;
 }
 .cazing a.domuy{
-	background:#63AEFF; 
+	background:#0088cc; 
 	
 }
 .relativedfg .icon-xuanzhong1 {
@@ -840,7 +793,7 @@ font-size:20px;
 
 }
 .bluebgss{
-	background: #63AEFF;
+	background: rgb(255,97,70);
 	border-radius: 4px;
 	color: #ffffff;
 }
@@ -950,94 +903,4 @@ font-size:20px;
 .procudimg{
 	width:70px;
 	height:70px;
-}
-
-
-/*  */
-.bigBox {
-	width: 100%;
-	overflow: hidden;
-	background-color: #fff;
-}
-
-.left_box {
-	width: 80%;
-	background-color: #F5F6F7;
-	margin: 10px auto;
-	padding: 10px;
-	min-height: 320px;
-}
-
-.baiduEdit {
-	cursor: pointer;
-	color: #fff;
-	padding: 5px;
-	background-color: #63AEFF;
-	border-color: #63AEFF;
-	border: 1px solid #63AEFF;
-	border-radius: 4px;
-	font-size: 14px;
-}
-
-.right_box>span {
-	display: block;
-}
-
-.right_box>p {
-	position: relative;
-	display: inline-block;
-}
-
-.right_box>p input {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100px;
-	width: 100px;
-	opacity: 0;
-}
-
-.right_box>p .upImg {
-	height: 100px;
-	width: 100px;
-}
-
-.right_box>p .guanbi {
-	position: absolute;
-	top: -15px;
-	right: -15px;
-	display: none;
-}
-
-.foot_box {
-	margin: 0 20px;
-	padding: 0 20px;
-	text-align: center
-}
-
-.foot_box button {
-	cursor: pointer;
-	height: 35px;
-	color: #fff;
-	width: 70px;
-	background-color: #63AEFF;
-	border-color: #63AEFF;
-	border: 1px solid #63AEFF;
-	border-radius: 4px;
-	font-size: 16px;
-}
-
-.detailFooter button {
-	cursor: pointer;
-	height: 35px;
-	color: #fff;
-	width: 70px;
-	background-color: #63AEFF;
-	border-color: #63AEFF;
-	border: 1px solid #63AEFF;
-	border-radius: 4px;
-	font-size: 16px;
-}
-.form-control{
-	width: 30%
 }

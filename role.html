@@ -4,11 +4,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
-	<!-- <link rel="stylesheet" href="css/simplePagination.css" /> -->
-	<link rel="stylesheet" href="css/depart-account.css" />
-	
+	<link rel="stylesheet" href="css/simplePagination.css" />
 	<link href="css/base.css" rel="stylesheet" type="text/css" />
 	<link href="css/index.css" rel="stylesheet" type="text/css" />
 	<title>角色管理</title>
@@ -16,7 +14,7 @@
 
 <body>
 	<div class="paddingbox">
-		<button class="btn-lg" data-toggle="modal" data-target="#myModal" onclick="addmanage()">新增角色</button>
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="addmanage()">新增角色</button>
 		<!-- 模态框添加（Modal） -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -50,7 +48,7 @@
 				</tr>
 			</thead>
 			<tbody>
-					 <!--<tr ng-repeat="items in list">
+					<!-- <tr ng-repeat="items in list">
 						<td width="33.3333333%">{{items.Name}}</td>
 						<td width="33.3333333%">{{items.CreateTime | date:'yyyy-MM-dd'}}</td>
 
@@ -65,20 +63,17 @@
 			</table>
 
 			<!-- 分页 -->
-			<!-- <footer class="footer_first">
+			<footer class="footer_first">
 				<div class="pagination-holder clearfix">
 					<div id="fenghui-pagination" class="pagination">
 					</div>
 				</div>
-			</footer>  -->
-			<div class="tcdPageCode"></div>
+			</footer> 
 			<!-- 分页 --> 
 		</div>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<!-- <script src="js/jquery.simplePagination.js"></script> -->
-		<script src="js/jquery.page.js"></script>
-		
+		<script src="js/jquery.simplePagination.js"></script>
 		<script src="js/gloab.js"></script>
 		<script src="js/role.js"></script>
 
