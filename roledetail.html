@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
+	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+	<title>角色管理</title>
+</head>
+
+<body>
+	<div class="paddingbox" >
+		<p class="returnbox">
+			<a href="javascript:history.back();"><i class="iconfont icon-fanhui"></i>返回上一层</a>
+		</p>
+		<table class="table table-bordered table-hover definewidth m10">
+			<tbody>
+				<tr>
+					<td width="200px" >角色名称</td>
+					<td><input type="text" class="chgty" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<td>状态</td>
+					<td><i class="iconfont icon-xuanzhong1">选中</i><i class="iconfont icon-jinlingyingcaiwangtubiao58">禁用</i></td>
+				</tr>
+				<tr>
+					<td>权限</td>
+					<td>
+						<ul class="miantable">
+							<!-- <li ng-repeat="items in list">
+								<a ng-click="togglemun($index)"><i class="iconfont" ng-class="{'icon-shouqi':isopen==$index,'icon-zhankai':isopen!=$index}"></i>{{items.Menu}}</a>
+								<ul class="seconuntable" ng-if="isopen==$index">
+									<li ng-repeat="iten in items.SubMenu">
+										<div class="relativedfg">
+											<span class="poabout"></span>
+											<a>{{iten.SubMenu}}</a>
+											<em class="iconfont" ng-class="{'icon-xuanzhong1':iten.IsSelect!=0,'icon-jinlingyingcaiwangtubiao58':iten.IsSelect==0}" ng-click="huoqu($parent.$index,$index,items.MenuID,iten.SubMenuID,iten.IsSelect)"></em>
+										</div>
+									</li>
+
+								</ul>
+							</li> -->
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/gloab.js"></script>
+	<script src="js/roledetai.js"></script>
+
+</body>
+
+</html>

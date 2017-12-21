@@ -1,0 +1,106 @@
+html,
+body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family:"SimSun","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:12px;
+	/*min-height: 100%;*/
+	color: #3d3d3d;
+}
+
+a {
+	color: #262626;
+}
+em{
+	font-weight: normal;
+}
+i,
+b,
+em,
+strong {
+	font-style: normal;
+}
+
+strong {
+	font-weight: normal;
+}
+a:hover,
+a:active {
+	text-decoration: none;
+}
+
+a,
+button,
+input,
+textarea {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img {
+	border: 0
+}
+
+a:active {
+	color: #0062cc
+}
+
+a {
+	background: 0 0;
+	text-decoration: none;
+}
+*{
+    outline: 0;
+}
+
+a:active,
+a:hover {
+	outline: 0
+}
+input,button,select,textarea{outline:none;}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+input[type=text] {
+	-webkit-appearance: none;
+}
+
+li {
+	list-style: none;
+}
+[v-cloak] {
+	display: none;
+}
+
+.clearfix:after {
+	content: '.';
+	display: block;
+	clear: both;
+	height: 0;
+	visibility: hidden;
+	z-index: 100;
+}
+table{
+	 font-size:14px;
+	 line-height: 20px;
+}
+button.btn-lg,.btn{
+	font-size: 13px;
+	padding:5px 10px;
+	border: 0;
+}
+.paddingbox{
+	padding:20px;
+}
+

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>后台管理系统</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
+	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+</head>
+
+	<body>
+		<div class="Container">
+			<div class="header">
+
+				<div class="dl-title">
+					<!--<img src="/chinapost/Public/assets/img/top.png">-->
+				</div>
+
+				<div class="dl-log">欢迎您<!-- ，<span class="dl-log-user">root</span> -->
+					<a title="退出系统" class="dl-log-quit">[退出]</a>
+				</div>
+			</div>
+			<div class="content clearfix">
+				<div class="dl-main-nav">
+					<!-- <div class="dl-inform">
+						<div class="dl-inform-title"><s class="dl-inform-icon dl-up"></s></div>
+					</div> -->
+					<ul id="J_Nav" class="nav-list ks-clear">
+						<!-- <li class="nav-item dl-selected">
+							<div class="nav-item-inner nav-home">系统管理</div>
+						</li>
+						<li class="nav-item dl-selected">
+							<div class="nav-item-inner nav-order">业务管理</div>
+						</li> -->
+
+					</ul>
+				</div>
+				<!-- <ul id="J_NavContent" class="dl-tab-conten">
+
+			</ul> -->
+			<div class="centerbox">
+				<div class="dl-second-nav">
+					<div id="J_1Tree" class="dl-second-tree">
+						<ul class="nav nav-pills nav-stacked">
+							<!-- <li role="presentation" class="dropdown" ng-repeat="phone in phones" ng-click="meactive($index)">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+									{{phone.name}}
+									<span class="caret"></span>
+								</a>
+								<ul ng-class="{'inactivety':beactive==$index}">
+									<li ng-repeat="title in phone.snippet" ng-class="{bluebgss:title.title==activehtml}">
+										<a ng-href="{{title.urlf}}" target="ifrmname" ng-click="add($event,$parent.$index)">{{title.title}}</a>
+									</li>
+								</ul>
+							</li> -->
+						</ul>
+
+					</div>
+				</div>
+				<div class="box-right">
+						<ul class="nvbar clearfix" id="apendli">
+							<!-- <li ng-repeat="litem in ulnav" ng-click='backgrounp($index)' ng-class='{white: coloer == $index}' context-menu target='a' ng-init='model=[{name:"查看"},{name:"刷新"},{name:"点击"}]'>
+								<a ng-href="{{litem.urlf}}" target="ifrmname">{{litem.title}}</a>
+								<i ng-click="del($index)"></i> -->
+							<!-- </li> -->
+						</ul>
+						<!-- <ul id='a' class="bui-context-menu bui-pop-menu bui-menu bui-ext-position">
+							<li ng-repeat='m in ms' class="bui-context-menu-item bui-menu-item iconfont" ng-class="{'icon-shuaxin':$index==0,'icon-guanbi1':$index==1,'icon-androidcancel':$index>1}" ng-click='fn($event,m.name)'>
+								<a>{{m.name}}</a>
+							</li>
+						</ul> -->
+						<iframe name="ifrmname" width="100%" height="100%" frameborder="0" id="myiframe">
+						</iframe>
+					</div>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/gloab.js"></script>
+	<script src="js/index.js"></script>
+	</body>
+
+	</html>

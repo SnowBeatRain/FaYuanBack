@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/simplePagination.css" />
+		<link href="css/base.css" rel="stylesheet" type="text/css" />
+		<link href="css/index.css" rel="stylesheet" type="text/css" />
+		<title>权限管理列表</title>
+	</head>
+
+	<body>
+		<div class="paddingbox">
+			<p class="returnbox"><a href="javascript:history.back();"><i class="iconfont icon-fanhui"></i>返回上一层</a></p>
+			<table class="table table-bordered table-hover definewidth m10">
+				<!--<caption>基本的表格布局</caption>-->
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>控制器</th>
+						<th>动作</th>
+						<th>是否拥有权限</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- <tr ng-repeat="items in list" ng-class="{'special':items.IsSelect==0}">
+						<td>{{items.Name}}</td>
+						<td>{{items.Controller}}</td>
+						<td>{{items.Action}}</td>
+						<td><a class="iconfont" ng-class="{'icon-xuanzhong':items.IsSelect!=0,'icon-weixuanzhong':items.IsSelect==0}"  ng-click="huoqu($index,items.ID,items.IsSelect)"></a></td>
+					</tr> -->
+				</tbody>
+			</table>
+			<!-- 分页 -->
+			<footer class="footer_first">
+				<div class="pagination-holder clearfix">
+					<div id="fenghui-pagination" class="pagination">
+					</div>
+				</div>
+			</footer> 
+			<!-- 分页 --> 
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/gloab.js"></script>
+		<script src="js/jquery.simplePagination.js"></script>
+        <script src="js/zationList.js"></script>
+	</body>
+
+</html>

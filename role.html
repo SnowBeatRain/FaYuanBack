@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/simplePagination.css" />
+	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+	<title>角色管理</title>
+</head>
+
+<body>
+	<div class="paddingbox">
+		<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="addmanage()">新增角色</button>
+		<!-- 模态框添加（Modal） -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">新增</h4>
+					</div>
+					<div class="modal-body addr">
+						<div><label>角色名称：</label><input type="text" class="form-control" id="Name"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary blocka" onclick="save()">提交</button>
+						<button type="button" class="btn btn-primary none" onclick="editsave()">提交更改</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+		<!-- 模态框（Modal） -->
+
+		<table class="table table-bordered table-hover definewidth m10">
+			<!--<caption>基本的表格布局</caption>-->
+			<thead>
+				<tr>
+					<th>角色名</th>
+					<th>创建时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+					<!-- <tr ng-repeat="items in list">
+						<td width="33.3333333%">{{items.Name}}</td>
+						<td width="33.3333333%">{{items.CreateTime | date:'yyyy-MM-dd'}}</td>
+
+						<td class="cazing">
+							<a class="iconfont icon-quanxianguanli" ng-href="#{{items.ID}}" ng-click="uphref(items.ID)"></a>
+							<a class='jueedit' data-toggle="modal" data-target="#myModal" ng-click="edit($index,items.ID,items.Name)">编辑角色</a>
+							<a class="domuy" ng-href="#{{items.ID}}"  ng-click="roledatail(items.ID,items.Name)">详情</a>
+						</td>
+
+					</tr> -->
+				</tbody>
+			</table>
+
+			<!-- 分页 -->
+			<footer class="footer_first">
+				<div class="pagination-holder clearfix">
+					<div id="fenghui-pagination" class="pagination">
+					</div>
+				</div>
+			</footer> 
+			<!-- 分页 --> 
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.simplePagination.js"></script>
+		<script src="js/gloab.js"></script>
+		<script src="js/role.js"></script>
+
+	</body>
+
+	</html>

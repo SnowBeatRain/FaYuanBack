@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="css/simplePagination.css" />
+		<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
+		<link href="css/base.css" rel="stylesheet" type="text/css" />
+		<link href="css/index.css" rel="stylesheet" type="text/css" />
+		<title>权限管理</title>
+	</head>
+
+	<body>
+		<div class="paddingbox">
+			<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="addmanage()">添加</button>
+			<!-- 模态框添加（Modal） -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						
+						<div class="modal-body addr">
+							<div><label>名称：</label><input type="text" id="Name"></div>
+							<div><label>控制器：</label><input type="text" class="form-control" id="Controller"></div>
+						    <div><label>动作：</label><input type="text" class="form-control" id="Action"></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+							<button type="button" class="btn btn-primary blocka" onclick="save()">提交</button>
+							<button type="button" class="btn btn-primary none" onclick="editsave()">提交更改</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal -->
+			</div>
+			<!-- 模态框（Modal） -->
+			
+			
+			
+			
+			<table class="table table-bordered table-hover definewidth m10">
+				<!--<caption>基本的表格布局</caption>-->
+				<thead>
+					<tr>
+						<th>名称</th>
+						<th>控制器</th>
+						<th>动作</th>
+						<th>创建时间</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- <tr ng-repeat="items in list">
+						<td>{{items.Name}}</td>
+						<td>{{items.Controller}}</td>
+						<td>{{items.Action}}</td>
+						
+						<td>{{items.CreateTime | date:'yyyy-MM-dd'}}</td>
+						<td>
+							<a class="iconfont icon-bianji" class="btn editAgent" data-toggle="modal" data-target="#myModal" ng-click="edit($index,items.ID,items.Name,items.Controller,items.Action)"></a>
+							<a class="iconfont icon-delete" ng-click="del($index,items.ID)"></a>
+						</td>
+						
+					</tr> -->
+				</tbody>
+			</table>
+			
+			<!-- 分页 -->
+			<footer class="footer_first">
+				<div class="pagination-holder clearfix">
+					<div id="fenghui-pagination" class="pagination">
+					</div>
+				</div>
+			</footer> 
+			<!-- 分页 --> 
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.simplePagination.js"></script>
+		<script src="js/gloab.js"></script>
+        <script src="js/power.js"></script>
+        
+	</body>
+
+</html>
