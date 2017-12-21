@@ -1,0 +1,208 @@
+.add-submit-text2{
+	height: 46px;
+	padding-top:9px ;
+	display: inline-block;
+	width:310px;
+	font-size: 13px;
+	color:#595959 ;
+	margin-right: 20px;
+}
+
+.content3 .llll{
+	height: 360px;
+	margin-left: 20px;
+}
+.jindu{
+	overflow: hidden;
+	clear: both;
+	width: 1041px;
+}
+.jindu div{
+	float: left;
+}
+.circleImg{
+	display: inline-block;
+	text-align: center;
+	position: relative;
+}
+.circleImg p{
+	margin-top: 10px;
+	width: 100%;
+}
+.num{
+	display: inline-block;
+	color: #fff;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	position: absolute;
+	left: 0;
+}
+.order {
+	display: inline-block;
+	line-height: 60px;
+	margin: 0 47px;
+}
+.textPass{
+	color: #BD4B53;
+}
+.next-back-color1{
+	background-color: #d4989c;
+}
+.next-back-color2{
+	background-color: #BD4B53;
+}
+
+.form,.form2,.form4,.form5,.form6,.form7{
+		width: 100%;
+		background: rgba(0, 0, 0, 0.48);
+		padding: 40px 0;
+		position: absolute;
+		top: 0;
+		font-family:"兰亭黑";
+		display: none;
+}
+.form-content{
+	background: #fff;
+	width: 860px;
+	padding: 35px 0;
+	margin: auto;
+	font-family:"兰亭黑";
+	font-size: 12px;
+	margin-bottom: 20px;
+}
+.dy{
+	background: #BD4B53;
+	color: #fff;
+	padding: 5px 20px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+/*
+ * 宁波大学因公出国团组信息事先内部公示表
+ */
+*{
+	font-family: "微软雅黑";
+	margin: 0;
+	padding: 0;
+}
+.internal-publicity{
+    margin: auto; 
+    width: 794px;
+}
+.internal-publicity caption{
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 40px;
+	letter-spacing: 2px;
+	text-align: center;
+}
+caption {
+    color: #000000;
+    text-align: left;
+}
+.internal-publicity tr{
+	height: 45px;
+}
+.internal-publicity tr td:first-child{
+	width: 110px;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	text-align: center;
+}
+.internal-publicity tr td {
+    padding-left: 10px;
+	padding-right: 10px;
+    font-family: "微软雅黑";
+	font-size: 14px;
+}
+.internal-publicity span{
+	display: inline-block;
+	text-align: right;
+	width: 50px;
+}
+
+/*
+ * 日程安排表
+ */
+.rcTable .p1{
+	line-height: 30px;
+}
+.rcTable .p2{
+	text-align: center;
+}
+
+/*
+ * 人员备案表
+ */
+
+.copy{
+    margin: 0; 
+    width: 842px;
+    letter-spacing: 1px;
+    font-size: 12px;
+}
+.copy caption{
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	letter-spacing: 2px;
+	text-align: center;
+}
+.copy tr td{
+	height: 40px;
+}
+.copy .name1{
+	text-align: center;
+	font-size: 12px;
+}
+.copy span{
+	display: inline-block;
+	width: 40px;
+}
+.member> tbody > tr > td{
+	text-align: center;
+}
+.nameContent{
+	clear: both;
+	display: inline-block;
+	padding: 20px;
+	background: #fff;
+	position: absolute;
+	left: 50%;
+	top: 10%;
+	margin-left: -150px;
+	display: none;
+}
+.nameList{
+	width: 260px;
+	padding: 20px;
+}
+
+.closeIcon{
+	width: 15px;
+	height: 15px;
+	background: url(../image/icon.png) no-repeat 0 -40px;
+	float: right;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.nameBtn{
+	display: inline-block;
+	width: 30%;
+	padding: 10px 0;
+	border: 1px solid #BD4B53 ;
+	border-radius: 4px;
+	color: #BD4B53 ;
+	margin-bottom: 4px;
+	cursor: pointer;
+	text-align: center;
+	margin-right: 4px;
+}
+
+.nameBtn:hover{
+	border: 2px solid #A83139;
+	color: #A83139;
+}

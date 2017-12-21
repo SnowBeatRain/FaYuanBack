@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>用户列表</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/depart-account.css" />
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- 用药历史 -->
+    <div id="MedicalHistory" class="content">
+        <span onclick="Back()" style="color:#63AEFF">
+            <i class="iconfont icon-fanhui"></i> 返回</span>
+        <!-- 未发货 -->
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr style="height:50px;background-color:#EAEAEA;">
+                    <th>药品名称</th>
+                    <th>日期</th>
+                    <th>开始注射时间</th>
+                    <th>花费时间</th>
+                    <th>状态</th>
+                    <th>进度</th>
+                    <th>信息来源</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+
+        </table>
+        <div class="tcdPageCode"></div>
+    </div>
+
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="js/jquery.page.js"></script>
+<script src="js/gloab.js"></script>
+
+<script>
+    function Back() {
+        window.location.href ="userlist.html"
+    }
+    var pageindex;
+    var lastPage;
+    $(function () {
+        pageindex = 1;
+        getHistory(pageindex);
+    })
+
+
+    function getpage(a, c) {
+        $(".tcdPageCode").createPage({
+            pageCount: c,
+            current: a,
+            backFn: function (p) {
+                getHistory(p)
+            }
+        });
+    }
+
+    // 疼痛历史
+    function getHistory(pageindex) {
+        $.ajax({
+            type: "get",
+            url: mainurl + "api/P_User/MedicalHistory?Token=" + token + "&ID=" + getCookie("MedicalID") + "&PageIndex=" + pageindex + "&PageSize=10",
+            dataType: "json",
+            success: function (data) {
+                if (data.Status == 1) {
+                    var li = '';
+                    var list = data.Result.Data;
+                    var page = data.Result.PageCount;
+                    lastPage = data.Result.PageCount;
+                    for (var i = 0; i < list.length; i++) {
+                        li += `
+                            <tr id="${list[i].ID}">
+                                <td>${list[i].Name}</td>
+                                <td>${list[i].Date}</td>
+                                <td>${list[i].Time}</td>
+                                <td>${list[i].SpendTime}</td>
+                                <td>${list[i].Status}</td>
+                                <td>${list[i].Rate}</td>
+                                <td>${list[i].IP}</td>
+                            </tr>
+                            `
+                    }
+                    $("#MedicalHistory tbody").html(li)
+                    getpage(pageindex, page);
+                }
+                else if (data.Status == 40001) {
+                    alert(data.Result)
+                    window.location.href = "login.html"
+                } else {
+                    alert(data.Result)
+                }
+            }
+        });
+    }
+</script>
+
+</html>

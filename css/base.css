@@ -95,10 +95,27 @@ table{
 	 font-size:14px;
 	 line-height: 20px;
 }
-button.btn-lg,.btn{
+button.btn-lg{
 	font-size: 13px;
 	padding:5px 10px;
-	border: 0;
+	margin-bottom: 30px;
+	background-color: #fff;
+	border: 1px solid #63AEFF;
+	color: #63AEFF;
+	float: right;
+	border-radius: 5px;
+}
+.modal-footer{
+
+	text-align: center;
+}
+.modal-footer .btn{
+	font-size: 13px;
+	padding:5px 10px;
+	background-color: #fff;
+	border: 1px solid #337ab7;
+	color: #337ab7;
+	border-radius: 5px;
 }
 .paddingbox{
 	padding:20px;

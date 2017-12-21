@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
-		<link href="css/base.css" rel="stylesheet" type="text/css" />
-		<link href="css/index.css" rel="stylesheet" type="text/css" />
-		<title>后台管理系统</title>
-	</head>
-	<body>
 
-	<div class="cont">
-	<div class="left"><h3><span>后台管理</span>&nbsp; </h3></div>
-		<!-- <h2><img src="image/logo.png" style="width: 63px;height: 63px">你好投网络科技有限公司</h2> -->
-		<div class="form">
-            	<h1>登录</h1>
-            	<form>
-                	<dl>
-                        <dt><input type="text" id="username" placeholder="请输入账号"></dt>
-                        <input type="password"  placeholder="请输入密码" id="pasword" class="nulldata" >
-                    </dl>
-                    <ul>
-                        <input type="button" id="login" class="button" value="登录">
-                	<ul>
-                </form>
-                
-            </div>
-</div>
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jQuery.md5.js"></script>
-		<script src="js/gloab.js"></script>
-		<script src="js/main.js"></script>
-	
-	</body>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
+	<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
+	<link href="css/base.css" rel="stylesheet" type="text/css" />
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/login.css">
+	<title>后台管理系统</title>
+</head>
+
+<body>
+
+	<div class="box">
+		<img class="bg" src="image/bg.png" alt="" />
+		<div class="login">
+			<p>
+				<img src="image/name.png" alt="">
+			</p>
+			<div>
+				<img src="image/user.png" alt="" />
+				<input type="text" placeholder="请输入用户名" class="phone_name" id="username" />
+			</div>
+			<div>
+				<img src="image/password.png" alt="" />
+				<input type="password" placeholder="请输入密码" class="password" id="pasword" />
+			</div>
+
+			<input type="button" id="login" class="button login-in" value="登录">
+		</div>
+	</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/jQuery.md5.js"></script>
+<script src="js/xcConfirm.js"></script>
+<script src="js/gloab.js"></script>
+<script src="js/main.js"></script>
+<script>
+	$(".box").css({ "height": $(window).height() + "px" })
+</script>
+
 </html>
