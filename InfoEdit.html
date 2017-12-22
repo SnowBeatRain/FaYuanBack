@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>商品添加</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/depart-account.css" />
+    <link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .bigBox {
+            width: 100%;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .left_box {
+            float: left;
+            width: 30%;
+            background-color: #F5F6F7;
+            margin: 10px;
+            padding: 10px;
+            min-height: 320px;
+        }
+
+        .left_box div {
+            margin-bottom: 20px;
+        }
+
+        .baiduEdit {
+            cursor: pointer;
+            color: #fff;
+            padding: 5px 15px;
+            background-color: #0161BB;
+            border-color: #0161BB;
+            border: 1px solid #0161BB;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .right_box {
+            float: left;
+            width: 30%;
+            background-color: #F5F6F7;
+            margin: 10px;
+            padding: 10px;
+            min-height: 320px;
+        }
+
+        .right_box>div>span {
+            display: block;
+        }
+
+        .right_box>div>p {
+            position: relative;
+            display: inline-block;
+        }
+
+        .right_box>div>p input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 150px;
+            opacity: 0;
+        }
+
+        .right_box>div>p .upImg {
+            width: 300px;
+            height: 150px
+        }
+
+        .right_box>div>p .guanbi {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            display: none;
+        }
+
+        .foot_box {
+            margin: 0 20px;
+            padding: 0 20px;
+            width: 60%;
+            text-align: center
+        }
+
+        .foot_box button {
+            cursor: pointer;
+            height: 35px;
+            color: #fff;
+            width: 70px;
+            background-color: #0161BB;
+            border-color: #0161BB;
+            border: 1px solid #0161BB;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .detailFooter button {
+            cursor: pointer;
+            height: 35px;
+            color: #fff;
+            width: 70px;
+            background-color: #0161BB;
+            border-color: #0161BB;
+            border: 1px solid #0161BB;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="productHandle" class="content">
+        <a style="display:block;margin:10px 0;color:#63AEFF" href="javascript:history.back();">
+            返回上一层
+            <br>
+        </a>
+        <div class="bigBox">
+            <div class="left_box">
+                <div>
+                    <label for="">标题</label>
+                    <input type="text" class="form-control Name" placeholder="请输入商品名">
+                </div>
+                <div>
+                    <label for="">是否短信推送</label>
+                    <br>
+                    <span>是</span>
+                    <img class="shangjia" onclick="shangjia()" src="image/yes.png" alt="">
+                    <span style="margin-left:20px;">否</span>
+                    <img class="weishangjia" onclick="weishangjia()" src="image/no.png" alt="">
+                </div>
+                <div>
+                    <label for="">百度编辑器</label>
+                    <br>
+                    <button class="baiduEdit" onclick="tuwenCh()">正文内容</button>
+                </div>
+            </div>
+            <div class="right_box">
+                <div>
+                    <label for="">产品主图</label>
+                    <p>
+                        <input type="file" class="upImg_small" onchange="upSmallImg()">
+                        <img class="upImg upImg1" src="image/tu.png" alt="">
+                        <img class="guanbi guanbi1" onclick="guanbi1()" src="image/guanbi.png" alt="">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="foot_box" style="">
+            <button onclick="savePro()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/xcConfirm.js"></script>
+    <script src="layer/layer.js"></script>
+
+    <script src="js/gloab.js"></script>
+    <div id="detail_box1">
+        <!-- 加载编辑器的容器 -->
+        <script id="container1" name="content" type="text/plain">这里写你的初始化内容</script>
+        <div class="detailFooter">
+            <button onclick="aaa()">保存</button>
+        </div>
+        <!-- 配置文件 -->
+        <script type="text/javascript" src="UEtidor/UEditor.config.js"></script>
+        <!-- 编辑器源码文件 -->
+        <script type="text/javascript" src="UEtidor/UEditor.all.js"></script>
+        <!-- 实例化编辑器 -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script src="js/gloab.js"></script>
+    </div>
+</body>
+
+<script>
+    $("#productHandle").show()
+    $("#detail_box1").hide()
+
+    function tuwenCh() {
+        $("#productHandle").hide()
+        $("#detail_box1").show()
+
+    }
+</script>
+<script>
+    var ue1 = UE.getEditor('container1');
+
+    function aaa() {
+        detail1 = (encodeURIComponent(ue1.getContent()))
+        $("#productHandle").show()
+        $("#detail_box1").hide()
+    }
+</script>
+<script src="js/InfoEdit.js"></script>
+
+</html>

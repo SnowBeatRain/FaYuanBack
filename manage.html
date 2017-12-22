@@ -26,7 +26,7 @@
 
 <body>
 	<div class="paddingbox">
-		<button class=" btn-lg" data-toggle="modal" data-target="#myModal" onclick="addmanage()">新增管理员</button>
+		<button class=" btn-lg" data-toggle="modal" data-target="#myModal">新增管理员</button>
 		<!-- 模态框添加（Modal） -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -37,25 +37,25 @@
 					</div>
 					<div class="modal-body addr">
 						<div>
-							<label>账号：</label>
+							<label>用户名：</label>
 							<input class="form-control" type="text" id="Name">
 						</div>
 						<div>
 							<label>密码：</label>
 							<input class="form-control" type="password" autocomplete="off" id="Password">
 						</div>
-						<div>
+						<!-- <div>
 							<label>角色：</label>
 							<select class="form-control" id="role">
 							</select>
-						</div>
-						<div class="none">
+						</div> -->
+						<!-- <div class="none">
 							<label>是否锁定：</label>
 							<select name="" id="IsLock" class="form-control">
 								<option value="true">是</option>
 								<option value="false">否</option>								
 							</select>
-						</div>
+						</div> -->
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -73,7 +73,7 @@
 			<thead>
 				<tr>
 					<th>用户名</th>
-					<th>是否锁定</th>
+					<!-- <th>是否锁定</th> -->
 					<th>创建时间</th>
 					<th>操作者</th>
 					<th>操作</th>
@@ -83,19 +83,10 @@
 
 			</tbody>
 		</table>
-		<!-- 分页 -->
-		<!-- <footer class="footer_first">
-			<div class="pagination-holder clearfix">
-				<div id="fenghui-pagination" class="pagination">
-				</div>
-			</div>
-		</footer> -->
 		<div class="tcdPageCode"></div>
-		<!-- 分页 -->
 	</div>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<!-- <script src="js/jquery.simplePagination.js"></script> -->
 	<script src="js/jquery.page.js"></script>
 	
 	<script src="js/jQuery.md5.js"></script>

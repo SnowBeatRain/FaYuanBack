@@ -27,25 +27,20 @@ function hqhf(pageNumber) {
           var page = data.Result.PageIndex;
           lastPage = data.Result.PageIndex;
           var Time = CreateTime.substring(0, 10);
-          if (IsLock == true) {
-            islock = "<img src='image/yes.png' />"
-          } else {
-            islock = "<img src='image/no.png' />"
-          }
-          tr += "<tr><td>" + Name + "</td><td>" + islock + "</td><td>" + Time + "</td><td>" + Role + "</td><td><button class='edit_btn' data-toggle='modal' data-target='#myModal' id=" + ID + ">修改</button></td></tr>";
+          tr += "<tr><td>" + Name + "</td><td>" + Time + "</td><td>" + Role + "</td><td>" +
+            "<img src='image/xiangqing.png' class='edit_img' data-toggle='modal' data-target='#myModal' id=" + ID + " /></td></tr>";
         };
         getpage(pageNumber, page);
         $("tbody").html(tr);
         //编辑
-        $(".edit_btn").each(function () {
+        $(".edit_img").each(function () {
           $(this).click(function () {
             $(".blocka").hide();
             $(".none").show();
             RoleID = $(this).attr("id");
             $.ajax({
-              url: mainurl + 'api/Admin/GetAdminByID',
+              url: mainurl + 'api/Admin/GetAdminByID?ID='+RoleID,
               type: 'get',
-              data: { "ID": RoleID },
               error: function () {
                 alert('服务器异常');
               },
@@ -94,37 +89,9 @@ function getpage(a, c) {
   });
 }
 
-function addmanage() {
-  $(".blocka").show();
-  $(".none").hide();
-  $.ajax({
-    url: mainurl + 'api/Role/GetRoles',
-    type: 'get',
-    data: { "PageIndex": 1, "PageSize": 50 },
-    error: function () {
-      alert('数据加载错误');
-    },
-    success: function (data) {
-      if (data.Status == 1) {
-        role = "";
-        for (var i = 0; i < data.Result.data.length; i++) {
-          var Name = data.Result.data[i]['Name'];
-          var ID = data.Result.data[i]['ID'];
-          role += "<option value=" + ID + ">" + Name + "</option>";
-        }
-        $("#role").html(role);
-      } else if (data.Status == 40001) {
-        top.location.href = "login.html";
-      } else {
-        alert(data.Result)
-      }
-    }
-  })
-}
-
 function save() {
   $.ajax({
-    url: mainurl + 'api/Admin/AddAdmin?Name=' + $("#Name").val() + '&Password=' + $.md5($("#Password").val()) + '&RoleID=' + $("#role").val() + '&Token=' + getCookie("token"),
+    url: mainurl + 'api/Admin/AddAdmin?Name=' + $("#Name").val() + '&Password=' + $.md5($("#Password").val()) + '&RoleID=' +RoleID + '&Token=' + getCookie("token"),
     type: 'get',
     error: function () {
       alert('服务器异常');
@@ -146,7 +113,7 @@ function save() {
 function editsave() {
   console.log($("#IsLock").val())
   $.ajax({
-    url: mainurl + 'api/Admin/EditAdmin?ID=' + RoleID + '&Name=' + $("#Name").val() + '&Password=' + $.md5($("#Password").val()) + '&RoleID=' + $("#role").val() + '&IsLock=' +$("#IsLock").val()+ '&Token=' + getCookie("token"),
+    url: mainurl + 'api/Admin/EditAdmin?ID=' + RoleID + '&Name=' + $("#Name").val() + '&Password=' + $.md5($("#Password").val()) + '&RoleID=' + $("#role").val() + '&IsLock=' + $("#IsLock").val() + '&Token=' + getCookie("token"),
     type: 'get',
     error: function () {
       alert('数据加载错误');

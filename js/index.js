@@ -130,8 +130,7 @@ function ExitSystem() {
 		onOk: function () {
 			delCookie("token");
 			delCookie("name")
-			window.close();
-			window.localStorage.href = "login.html"
+			window.location.href = "login.html"
 			
 		}
 	}

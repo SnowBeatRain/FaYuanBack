@@ -4,19 +4,21 @@ body {
 
 .box {
     position: relative;
+    padding: 150px 0;
 }
 
-.bg {
-    width: 80%;
-    height: 100%;
-    margin: 0 10%;
+.title {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 100px;
+    border-bottom: 2px solid #eee;
 }
 
 .login {
     position: absolute;
-    left: 38%;
-    top: 300px;
-    width: 45.5%;
+    left: 25%;
+    top: 35%;
+    width: 50%;
     padding: 0px 150px;
 }
 
@@ -31,22 +33,25 @@ body {
     border: 2px solid #bfbfbf;
     width: 100%;
     margin: 0 0 20px;
+    border-radius: 6px;
+    
     background-color: #FAFCFC;
 }
-
 .login div input {
     height: 60px;
     border: none;
+    vertical-align: middle;
     font-size: 20px;
     width: calc(100% - 65px)
 }
 
 .login-in {
-    margin-top: 100px;
-    background-color: #63AEFF;
+    margin-top: 50px;
+    background-color: #2B7FFC;
     color: #fff;
     width: 100%;
     height: 60px;
     border: none;
     font-size: 24px;
+    border-radius: 6px;
 }

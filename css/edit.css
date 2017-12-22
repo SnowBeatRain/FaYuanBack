@@ -1,0 +1,84 @@
+.bigBox {
+    width: 100%;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.left_box {
+    width: 30%;
+    background-color: #F5F6F7;
+    margin: 10px auto;
+    padding: 10px;
+    min-height: 320px;
+}
+
+.baiduEdit {
+    cursor: pointer;
+    color: #fff;
+    padding: 5px;
+    background-color: #63AEFF;
+    border-color: #63AEFF;
+    border: 1px solid #63AEFF;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.right_box>span {
+    display: block;
+}
+
+.right_box>p {
+    position: relative;
+    display: inline-block;
+}
+
+.right_box>p input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 100px;
+    opacity: 0;
+}
+
+.right_box>p .upImg {
+    height: 100px;
+    width: 100px;
+}
+
+.right_box>p .guanbi {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    display: none;
+}
+
+.foot_box {
+    margin: 0 20px;
+    padding: 0 20px;
+    text-align: center
+}
+
+.foot_box button {
+    cursor: pointer;
+    height: 35px;
+    color: #fff;
+    width: 70px;
+    background-color: #63AEFF;
+    border-color: #63AEFF;
+    border: 1px solid #63AEFF;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.detailFooter button {
+    cursor: pointer;
+    height: 35px;
+    color: #fff;
+    width: 70px;
+    background-color: #63AEFF;
+    border-color: #63AEFF;
+    border: 1px solid #63AEFF;
+    border-radius: 4px;
+    font-size: 16px;
+}
