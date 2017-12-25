@@ -3,6 +3,8 @@ var pageindex,
     starttime,
     endtime,
     status;
+// 总列表 方便获取详情
+var AllList = []
 var lastPage = ''
 $(function () {
     pageindex = 1;
@@ -24,6 +26,7 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
         success: function (data) {
             if (data.Status == 1) {
                 var li = '';
+                AllList = data.Result.Data;
                 var list = data.Result.Data;
                 var page = data.Result.PageIndex;
                 lastPage = data.Result.PageIndex;
@@ -45,12 +48,12 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
                         d = ``
                     }
                     li += `
-                        <tr id="${list[i].ID}">
+                        <tr id="${list[i].ID}" name="${i}">
                             <td>${list[i].UserName}</td>
                             <td>${list[i].UserPhone}</td>
                             <td>${list[i].ContactName}</td>
                             <td>${list[i].ContactPhone}</td>
-                            <td>${list[i].CreateTime}</td>
+                            <td>${list[i].CreateTime.split(".")[0].replace("T", " ")}</td>
                             <td>${list[i].Title}</td>
                             <td>
                                 ${s}
@@ -81,7 +84,7 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
  */
 function KeySearch() {
     starttime = $("#startTime").val() == "" ? -1 : $("#startTime").val()
-    endtime = $("#endtime").val() == "" ? -1 : $("#endtime").val()
+    endtime = $("#endTime").val() == "" ? -1 : $("#endTime").val()
     status = $(".status").val()
     keyword = $("#orderSearch").val() == "" ? -1 : $("#orderSearch").val()
     hqhf(1, keyword, starttime, endtime, status)
@@ -96,12 +99,12 @@ function ResetOrderIndex() {
     $("#orderSearch").val("")
     hqhf(1, -1, -1, -1, -1)
 }
-function getpage(a, c, b, d, e) {
+function getpage(a, c, b, d, e, f) {
     $(".tcdPageCode").createPage({
         pageCount: c,
         current: a,
         backFn: function (p) {
-            hqhf(p, b, d, e)
+            hqhf(p, b, d, e, f)
         }
     });
 }
@@ -112,61 +115,77 @@ $(".closeBtn").click(function () {
     $("#isDeal").modal("hide")
 })
 // 点击处理
+var dealId = ""
 function dealBtn(e) {
-    var id = $(e).parents("tr").attr("id");
-    $(".Deal").on("click", function () {
+    dealId = $(e).parents("tr").attr("id");
+    var name = $(e).parents("tr").attr("name");
+    $(".noFeedPeople").html(AllList[name].UserName)
+    $(".noFeedPhone").html(AllList[name].UserPhone)
+    $(".noFeedText").html(AllList[name].Title)
 
-        var DealTime = $("#DealTime").val()
-        var DealWay = $("#DealWay").val()
-        var DealNote = $("#DealNote").val()
-        if (DealTime == "" || DealWay == "") {
-            var txt = "请完善信息";
-            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
-        } else {
-            var txt = "确定处理吗？";
-            var option = {
-                title: "提示",
-                btn: parseInt("0011", 2),
-                onOk: function () {
-                    $.ajax({
-                        type: "post",
-                        url: mainurl + "/api/Feedback/Deal?Token=" + token,
-                        data: {
-                            "ID": id,
-                            "DealTime": DealTime,
-                            "DealWay": DealWay,
-                            "DealNote": DealNote == "" ? -1 : DealNote,
-                        },
-                        dataType: "json",
-                        success: function (data) {
-                            if (data.Status == 1) {
-                                var txt = data.Result;
-                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
-                                hqhf(1, -1, -1, -1, -1)
-                            } else if (data.Status == 40001) {
-                                var txt = data.Result;
-                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
-                                window.location.href = "login.html"
-                            } else {
-                                var txt = data.Result;
-                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
-                            }
-                        },
-                        error: function () {
-                            var txt = "服务器异常";
+}
+$(".Deal").on("click", function () {
+    var DealTime = $("#DealTime").val()
+    var DealWay = $("#DealWay").val()
+    var DealNote = $("#DealNote").val()
+    if (DealTime == "" || DealWay == "") {
+        var txt = "请完善信息";
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+    } else {
+        var txt = "确定处理吗？";
+        var option = {
+            title: "提示",
+            btn: parseInt("0011", 2),
+            onOk: function () {
+                $.ajax({
+                    type: "post",
+                    url: mainurl + "/api/Feedback/Deal?Token=" + token,
+                    data: {
+                        "ID": dealId,
+                        "DealTime": DealTime,
+                        "DealWay": DealWay,
+                        "DealNote": DealNote == "" ? -1 : DealNote,
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.Status == 1) {
+                            // 处理成功 清空数据
+                            $("#DealTime").val("")
+                            $("#DealWay").val("")
+                            $("#DealNote").val("")
+                            $("#noDeal").modal("hide")
+                            var txt = data.Result;
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                            hqhf(1, -1, -1, -1, -1)
+                        } else if (data.Status == 40001) {
+                            var txt = data.Result;
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                            window.location.href = "login.html"
+                        } else {
+                            var txt = data.Result;
                             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                         }
-                    });
-                }
+                    },
+                    error: function () {
+                        var txt = "服务器异常";
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                    }
+                });
             }
-            window.wxc.xcConfirm(txt, "custom", option);
         }
+        window.wxc.xcConfirm(txt, "custom", option);
+    }
 
 
-    })
-}
-
+})
 // 查看已处理信息
 function alreadyDeal(e) {
     var id = $(e).parents("tr").attr("id");
+    var name = $(e).parents("tr").attr("name");
+    $(".isFeedPeople").html(AllList[name].UserName)
+    $(".isFeedPhone").html(AllList[name].UserPhone)
+    $(".isFeedText").html(AllList[name].Title)
+    $(".DealTime").html(AllList[name].DealTime)
+    $(".DealWay").html(AllList[name].DealWay)
+    $(".DealNote").html(AllList[name].DealNote)
 }

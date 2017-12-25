@@ -245,7 +245,7 @@ li {
 	background-color: #faf5f5;
 	float: left;
 	position: relative;
-	width: 15%;
+	width: 10%;
 	min-height: inherit;
 }
 
@@ -372,7 +372,9 @@ li {
 	border-radius: 4px;
 	padding: 5px 10px;
 	font-size: 14px;
-	float: right;
+	/* float: right; */
+	position: absolute;
+	right: 0;
 }
 
 .dl-log .form-control {
@@ -566,6 +568,13 @@ input.search {
 
 /* 模态框 */
 
+@media (min-width: 768px) {
+	.modal-dialog {
+		width: 450px;
+		margin: 100px auto;
+	}
+}
+
 .modal-body {
 	text-align: center;
 	padding: 20px 0;
@@ -573,7 +582,7 @@ input.search {
 
 .modal-body div {
 	border: 2px solid #efefef;
-	margin: 20px 20%;
+	margin: 20px 10%;
 }
 
 .active {
@@ -1122,4 +1131,7 @@ tr.special {
 .procudimg {
 	width: 70px;
 	height: 70px;
+}
+.ProImg{
+	width: 200px;
 }

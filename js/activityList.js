@@ -19,7 +19,7 @@ $(function () {
 function hqhf(pageindex, keyword, starttime, endtime, status) {
     $.ajax({
         type: "get",
-        url: mainurl + "/api/Activity/GetListByPage?Token=" + token + "&PageIndex=" + pageindex + "&PageSize=10&Keyword=" + keyword + "&StartTime=" + starttime + "&EndTime=" + endtime + "&Status=" + status,
+        url: mainurl + "/api/Activity/GetListByPage?Token=" + token + "&PageIndex=" + pageindex + "&PageSize=5&Keyword=" + keyword + "&StartTime=" + starttime + "&EndTime=" + endtime + "&Status=" + status,
         dataType: "json",
         success: function (data) {
             if (data.Status == 1) {
@@ -30,12 +30,12 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
                 for (var i = 0; i < list.length; i++) {
                     li += `
                     <tr id="${list[i].ID}">
-                        <td>${list[i].ContactName}</td>
-                        <td>${list[i].ContactPhone}</td>
-                        <td>${list[i].CreateTime}</td>
+                        <td><img class="ProImg" src="${list[i].Image}" alt="展示图"></td>
                         <td>${list[i].Title}</td>
+                        <td>${list[i].CreateTime.split(".")[0].replace("T", " ")}</td>
+                        <td>${list[i].ViewCount}</td>
                         <td>
-                            <img src="image/xiangqing.png" alt=""  onclick="editInfo(this)">
+                            <img src="image/xiangqing.png" alt="" onclick="editInfo(this)">
                             <img src="image/shanchu.png" onclick="DeleteInfo(this)" alt="">
                         </td>
                     </tr>
@@ -61,7 +61,7 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
 */
 function KeySearch() {
     starttime = $("#startTime").val() == "" ? -1 : $("#startTime").val()
-    endtime = $("#endtime").val() == "" ? -1 : $("#endtime").val()
+    endtime = $("#endTime").val() == "" ? -1 : $("#endTime").val()
     status = $(".status").val()
     keyword = $("#orderSearch").val() == "" ? -1 : $("#orderSearch").val()
     hqhf(1, keyword, starttime, endtime, status)
@@ -86,7 +86,7 @@ function getpage(a, c, b, d, e) {
     });
 }
 
-function Delete(e) {
+function DeleteInfo(e) {
     var id = $(e).parents("tr").attr("id");
     var txt = "确定删除吗？";
     var option = {
@@ -95,11 +95,13 @@ function Delete(e) {
         onOk: function () {
             $.ajax({
                 type: "get",
-                url: mainurl + "/api/P_Plat/Delete?Token=" + token + "&ID=" + id,
+                url: mainurl + "api/Activity/Del?Token=" + token + "&ID=" + id,
                 dataType: "json",
                 success: function (data) {
                     if (data.Status == 1) {
-                        hqhf(1)
+                        var txt = data.Result;
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                        hqhf(1, -1, -1, -1, -1)
                     } else if (data.Status == 40001) {
                         alert(data.Result)
                         window.location.href = "login.html"

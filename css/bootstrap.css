@@ -3115,6 +3115,7 @@ fieldset[disabled] .btn-default.focus {
   color: #fff;
   background-color: #0161BB;
   border-color: #0161BB;
+  padding: 5px 15px;
 }
 .closeBtn{
   color: #0161BB;

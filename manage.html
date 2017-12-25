@@ -8,7 +8,7 @@
 	<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
 	<!-- <link rel="stylesheet" href="css/simplePagination.css" /> -->
 	<link rel="stylesheet" href="css/depart-account.css" />
-	
+
 	<link href="css/base.css" rel="stylesheet" type="text/css" />
 	<link href="css/index.css" rel="stylesheet" type="text/css" />
 	<title>管理员管理</title>
@@ -26,7 +26,7 @@
 
 <body>
 	<div class="paddingbox">
-		<button class=" btn-lg" data-toggle="modal" data-target="#myModal">新增管理员</button>
+		<button class="btn-lg" data-toggle="modal" data-target="#myModal" onclick="addmanage()">新增管理员</button>
 		<!-- 模态框添加（Modal） -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -58,18 +58,16 @@
 						</div> -->
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary blocka" onclick="save()">提交</button>
-						<button type="button" class="btn btn-primary none" onclick="editsave()">提交更改</button>
+						<button type="button" class="btn btn-default guanbi" data-dismiss="modal">关闭</button>						
+						<button type="button" class="btn btn-primary none" onclick="editsave()">保存</button>
+						<button type="button" class="btn btn-default delete" onclick="delBtn()">删除</button>						
 					</div>
 				</div>
-				<!-- /.modal-content -->
 			</div>
-			<!-- /.modal -->
 		</div>
 		<!-- 模态框（Modal） -->
 		<table class="table table-bordered table-hover definewidth m10">
-			<!--<caption>基本的表格布局</caption>-->
 			<thead>
 				<tr>
 					<th>用户名</th>
@@ -88,7 +86,7 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.page.js"></script>
-	
+
 	<script src="js/jQuery.md5.js"></script>
 	<script src="js/gloab.js"></script>
 	<script src="js/manage.js"></script>

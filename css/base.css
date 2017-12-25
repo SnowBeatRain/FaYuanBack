@@ -3,8 +3,8 @@ body {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	font-family:"SimSun","Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size:12px;
+	font-family: "SimSun", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
 	/*min-height: 100%;*/
 	color: #3d3d3d;
 }
@@ -12,9 +12,11 @@ body {
 a {
 	color: #262626;
 }
-em{
+
+em {
 	font-weight: normal;
 }
+
 i,
 b,
 em,
@@ -25,6 +27,7 @@ strong {
 strong {
 	font-weight: normal;
 }
+
 a:hover,
 a:active {
 	text-decoration: none;
@@ -49,15 +52,22 @@ a {
 	background: 0 0;
 	text-decoration: none;
 }
-*{
-    outline: 0;
+
+* {
+	outline: 0;
 }
 
 a:active,
 a:hover {
 	outline: 0
 }
-input,button,select,textarea{outline:none;}
+
+input,
+button,
+select,
+textarea {
+	outline: none;
+}
 
 p,
 h1,
@@ -67,7 +77,7 @@ h4,
 h5,
 h6,
 input,
-ul{
+ul {
 	margin: 0;
 	padding: 0;
 }
@@ -79,6 +89,7 @@ input[type=text] {
 li {
 	list-style: none;
 }
+
 [v-cloak] {
 	display: none;
 }
@@ -91,13 +102,15 @@ li {
 	visibility: hidden;
 	z-index: 100;
 }
-table{
-	 font-size:14px;
-	 line-height: 20px;
+
+table {
+	font-size: 14px;
+	line-height: 20px;
 }
-button.btn-lg{
+
+button.btn-lg {
 	font-size: 13px;
-	padding:5px 10px;
+	padding: 5px 10px;
 	margin-bottom: 30px;
 	background-color: #fff;
 	border: 1px solid #0161BB;
@@ -105,19 +118,22 @@ button.btn-lg{
 	float: right;
 	border-radius: 5px;
 }
-.modal-footer{
 
+.modal-footer {
 	text-align: center;
 }
-.modal-footer .btn{
+
+
+/* .modal-footer .btn{
 	font-size: 13px;
 	padding:5px 10px;
 	background-color: #fff;
 	border: 1px solid #337ab7;
 	color: #337ab7;
 	border-radius: 5px;
-}
-.paddingbox{
-	padding:20px;
+} */
+
+.paddingbox {
+	padding: 20px;
 }
 

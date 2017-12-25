@@ -8,7 +8,7 @@ function upSmallImg() {
     var lay = layer.load();
     $.ajax({
         type: 'post',
-        url: mainurl + "api/Tool/FileUploader?type=0&Token=" + getCookie('token'),
+        url: mainurl + "api/Tool/FileUploaderForAdmin?type=0&Token=" + getCookie('token'),
         data: formdata,
         cache: false,
         processData: false,
@@ -48,20 +48,16 @@ if (getCookie("InfoID")) {
     getDetail()
     function getDetail() {
         $.ajax({
-            type: "post",
-            url: mainurl + "api/P_Mall/ProductDetail?ID=" + getCookie("InfoID"),
+            type: "get",
+            url: mainurl + "api/Activity/Detail?ID=" + getCookie("InfoID"),
             dataType: "json",
             async: true,
             success: function (data) {
                 if (data.Status == 1) {
-                    var Name = $(".Name").val(data.Result.Name)
-                    var EName = $(".EName").val(data.Result.EName)
-                    var Intro = $(".Intro").val(data.Result.Intro)
-                    var EIntro = $(".EIntro").val(data.Result.EIntro)
-                    var Price = $(".Price").val(data.Result.Price)
-                    var Stock = $(".Stock").val(data.Result.Stock)
+                    $(".Name").val(data.Result.Title)
+                    sendMsg = false
                     // 判断是否短信
-                    if (data.Result.IsOnSale) {
+                    if (sendMsg) {
                         $(".shangjia").attr("src", "image/yes.png")
                         $(".weishangjia").attr("src", "image/no.png")
                     } else {
@@ -69,16 +65,16 @@ if (getCookie("InfoID")) {
                         $(".weishangjia").attr("src", "image/yes.png")
                     }
                     // 判断大小图
-                    if (data.Result.Image) {
-                        $(".upImg1").attr("src", mainurl + data.Result.Image)
-                        SmallImgUrl = data.Result.Image
+                    if (data.Result.Url) {
+                        $(".upImg1").attr("src", mainurl + data.Result.Url)
+                        SmallImgUrl = data.Result.Url
                     }
                     // 编辑器内容
-                    if (data.Result.Detail != null) {
+                    if (data.Result.Content != null) {
                         ue1 = UE.getEditor('container1');
-                        detail1 = data.Result.Detail
+                        detail1 = data.Result.Content
                         ue1.ready(function () {
-                            this.setContent(decodeURIComponent(data.Result.Detail));
+                            this.setContent(decodeURIComponent(data.Result.Content));
                         })
                     } else {
                         ue1 = UE.getEditor('container1');
@@ -99,39 +95,25 @@ if (getCookie("InfoID")) {
     // 编辑提交
     function savePro() {
         var Name = $(".Name").val()
-        var EName = $(".EName").val()
-        var Intro = $(".Intro").val()
-        var EIntro = $(".EIntro").val()
-        var Price = $(".Price").val()
-        var Stock = $(".Stock").val()
         var Detail = detail1
-        var EDetail = detail2
         var Image = SmallImgUrl
-        var Image2 = BigmgUrl
         $.ajax({
             type: "post",
-            url: mainurl + "api/P_Mall/AddOrEditProduct?Token=" + getCookie("token"),
+            url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
             dataType: "json",
             data: {
                 "ID": getCookie("InfoID"),
-                "Name": Name,
-                "EName": EName,
-                "Image": Image,
-                "Image2": Image2,
-                "Intro": Intro,
-                "EIntro": EIntro,
-                "Price": Price,
-                "Stock": Stock,
-                "IsOnSale": sendMsg,
-                "Detail": Detail,
-                "EDetail": EDetail,
+                "Title": Name,
+                "Url": SmallImgUrl,
+                "IsSend": sendMsg,
+                "Content": Detail
             },
             async: true,
             success: function (data) {
                 if (data.Status == 1) {
 
                     delCookie("InfoID")
-                    window.location.href = "ProductList.html"
+                    window.location.href = "ActivityList.html"
                 } else {
                     alert(data.Result)
                 }
@@ -143,36 +125,23 @@ else {
     // 添加提交
     function savePro() {
         var Name = $(".Name").val()
-        var EName = $(".EName").val()
-        var Intro = $(".Intro").val()
-        var EIntro = $(".EIntro").val()
-        var Price = $(".Price").val()
-        var Stock = $(".Stock").val()
-        var Detail = detail1
-        var EDetail = detail2
+        var Detail = detail1 == "" ? encodeURIComponent("这里你的初始化内容") : detail1
         var Image = SmallImgUrl
-        var Image2 = BigmgUrl
         $.ajax({
             type: "post",
-            url: mainurl + "api/P_Mall/AddOrEditProduct?Token=" + getCookie("token"),
+            url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
             dataType: "json",
             data: {
-                "Name": Name,
-                "EName": EName,
-                "Image": Image,
-                "Image2": Image2,
-                "Intro": Intro,
-                "EIntro": EIntro,
-                "Price": Price,
-                "Stock": Stock,
-                "IsOnSale": sendMsg,
-                "Detail": Detail,
-                "EDetail": EDetail,
+                // "ID": ,
+                "Title": Name,
+                "Url": SmallImgUrl,
+                "IsSend": sendMsg,
+                "Content": Detail
             },
             async: true,
             success: function (data) {
                 if (data.Status == 1) {
-                    window.location.href = "ProductList.html"
+                    window.location.href = "ActivityList.html"
                 }
                 else if (data.Status == 40001) {
                     alert(data.Result)
@@ -185,7 +154,7 @@ else {
     }
 }
 
-function guanbi1(){
+function guanbi1() {
     SmallImgUrl = ""
     $(".upImg1").attr("src", "./image/tu.png")
     $(".guanbi1").hide()
