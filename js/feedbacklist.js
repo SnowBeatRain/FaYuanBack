@@ -67,10 +67,14 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
                 $("#feedBacklist tbody").html(li)
                 getpage(pageindex, page, keyword, starttime, endtime, status);
             } else if (data.Status == 40001) {
-                alert(data.Result)
-                window.location.href = "login.html"
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                setTimeout(() => {
+                    top.location.href = "login.html"
+                }, 500);
             } else {
-                alert(data.Result)
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
         },
         error: function () {
@@ -160,7 +164,9 @@ $(".Deal").on("click", function () {
                         } else if (data.Status == 40001) {
                             var txt = data.Result;
                             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
-                            window.location.href = "login.html"
+                            setTimeout(() => {
+                                top.location.href = "login.html"
+                            }, 500);
                         } else {
                             var txt = data.Result;
                             window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
@@ -185,7 +191,7 @@ function alreadyDeal(e) {
     $(".isFeedPeople").html(AllList[name].UserName)
     $(".isFeedPhone").html(AllList[name].UserPhone)
     $(".isFeedText").html(AllList[name].Title)
-    $(".DealTime").html(AllList[name].DealTime)
+    $(".DealTime").html(AllList[name].DealTime.split("T")[0])
     $(".DealWay").html(AllList[name].DealWay)
     $(".DealNote").html(AllList[name].DealNote)
 }

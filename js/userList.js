@@ -51,14 +51,19 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
                 $("#feedBacklist tbody").html(li)
                 getpage(pageindex, page, keyword, starttime, endtime);
             } else if (data.Status == 40001) {
-                alert(data.Result)
-                window.location.href = "login.html"
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                setTimeout(() => {
+                    top.location.href = "login.html"
+                }, 500);
             } else {
-                alert(data.Result)
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
         },
         error: function () {
-            alert("服务器异常")
+            var txt = "服务器异常";
+            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
         }
     });
 }
@@ -115,8 +120,11 @@ function isFreez(e) {
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                         hqhf(pageindex, keyword, starttime, endtime, status);
                     } else if (data.Status == 40001) {
-                        alert(data.Result)
-                        window.location.href = "login.html"
+                        var txt = data.Result;
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                        setTimeout(() => {
+                            top.location.href = "login.html"
+                        }, 500);
                     } else {
                         var txt = data.Result;
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
@@ -150,8 +158,11 @@ function noFreez(e) {
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                         hqhf(pageindex, keyword, starttime, endtime, status);
                     } else if (data.Status == 40001) {
-                        alert(data.Result)
-                        window.location.href = "login.html"
+                        var txt = data.Result;
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                        setTimeout(() => {
+                            top.location.href = "login.html"
+                        }, 500);
                     } else {
                         var txt = data.Result;
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
@@ -200,14 +211,20 @@ function FileIn() {
                     processData: false, // 不处理发送的数据，因为data值是Formdata对象，不需要对数据做处理
                     contentType: false, // 不设置Content-type请求头
                     success: function (data) {
-                        var txt = data.Result;
-                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
-                        setTimeout('later()', 1000);
+                        if (data.Status == 1) {
+                            var txt = data.Result;
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                            setTimeout('later()', 1000);
+                        } else {
+                            var txt = data.Result;
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                        }
                     }
                 })
             }
             else {
-                alert(data.Result)
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
         }
     })

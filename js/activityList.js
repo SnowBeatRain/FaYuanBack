@@ -1,25 +1,23 @@
 var pageindex,
     keyword,
     starttime,
-    endtime,
-    status;
+    endtime;
 var lastPage = ''
 $(function () {
     pageindex = 1;
     keyword = -1;
     starttime = -1;
     endtime = -1;
-    status = -1;
     if (location.href.indexOf("pageindex") > 0) {
         pageindex = location.href.split('pageindex=')[1];
     }
-    hqhf(pageindex, keyword, starttime, endtime, status);
+    hqhf(pageindex, keyword, starttime, endtime);
 })
 
-function hqhf(pageindex, keyword, starttime, endtime, status) {
+function hqhf(pageindex, keyword, starttime, endtime) {
     $.ajax({
         type: "get",
-        url: mainurl + "/api/Activity/GetListByPage?Token=" + token + "&PageIndex=" + pageindex + "&PageSize=5&Keyword=" + keyword + "&StartTime=" + starttime + "&EndTime=" + endtime + "&Status=" + status,
+        url: mainurl + "/api/Activity/GetListByPage?Token=" + token + "&PageIndex=" + pageindex + "&PageSize=5&Keyword=" + keyword + "&StartTime=" + starttime + "&EndTime=" + endtime,
         dataType: "json",
         success: function (data) {
             if (data.Status == 1) {
@@ -42,16 +40,21 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
                     `
                 }
                 $("#feedBacklist tbody").html(li)
-                getpage(pageindex, page, keyword, starttime, endtime, status);
+                getpage(pageindex, page, keyword, starttime, endtime);
             } else if (data.Status == 40001) {
-                alert(data.Result)
-                window.location.href = "login.html"
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                setTimeout(() => {
+                    top.location.href = "login.html"
+                }, 500);
             } else {
-                alert(data.Result)
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
         },
         error: function () {
-            alert("服务器异常")
+            var txt = "服务器异常";
+            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
         }
     });
 }
@@ -62,9 +65,8 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
 function KeySearch() {
     starttime = $("#startTime").val() == "" ? -1 : $("#startTime").val()
     endtime = $("#endTime").val() == "" ? -1 : $("#endTime").val()
-    status = $(".status").val()
     keyword = $("#orderSearch").val() == "" ? -1 : $("#orderSearch").val()
-    hqhf(1, keyword, starttime, endtime, status)
+    hqhf(1, keyword, starttime, endtime)
 }
 /*
 * 重置
@@ -72,9 +74,8 @@ function KeySearch() {
 function ResetOrderIndex() {
     $("#startTime").val("")
     $("#endTime").val("")
-    $(".status").val(-1)
     $("#orderSearch").val("")
-    hqhf(1, -1, -1, -1, -1)
+    hqhf(1, -1, -1, -1)
 }
 function getpage(a, c, b, d, e) {
     $(".tcdPageCode").createPage({
@@ -103,8 +104,11 @@ function DeleteInfo(e) {
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                         hqhf(1, -1, -1, -1, -1)
                     } else if (data.Status == 40001) {
-                        alert(data.Result)
-                        window.location.href = "login.html"
+                        var txt = data.Result;
+                        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                        setTimeout(() => {
+                            top.location.href = "login.html"
+                        }, 500);
                     } else {
                         var txt = data.Result;
                         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
