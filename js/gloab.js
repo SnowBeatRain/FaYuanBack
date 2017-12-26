@@ -1,4 +1,4 @@
-mainurl="http://192.168.1.132/Court/"
+var mainurl="http://192.168.1.132/Court/"
 /*以下是存储cookie的方法*/
 function setCookie(name, value, time) {
     var strsec = getsec(name);

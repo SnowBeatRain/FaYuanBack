@@ -48,11 +48,14 @@ function hqhf(pageNumber) {
               url: mainurl + 'api/Admin/GetAdminByID?ID=' + RoleID,
               type: 'get',
               error: function () {
-                alert('服务器异常');
+                var txt = "服务器异常";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+
               },
               success: function (data) {
                 if (data.Status == 1) {
                   addmanage();
+                  $("#myModalLabel").text("修改管理员")
                   $(".blocka").hide();
                   $(".guanbi").hide()
                   $(".none").show();
@@ -69,18 +72,25 @@ function hqhf(pageNumber) {
                     $("#IsLock").val("false");
                   }
                 } else if (data.Status == 40001) {
-                  top.location.href = "login.html";
+                  var txt = data.Result;
+                  window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                  setTimeout(() => {
+                    top.location.href = "login.html"
+                  }, 500);
                 } else {
-                  alert(data.Result)
+                  var txt = data.Result;
+                  window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                 }
               }
             })
           })
         })
       } else if (data.Status == 40001) {
-        top.location.href = "login.html";
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
       } else {
-        alert(data.Result)
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
       }
     }
   })
@@ -104,6 +114,7 @@ function addmanage() {
   $(".guanbi").show()
   $("#Name").val("")
   $("#Password").val("")
+  $("#myModalLabel").text("新增管理员")
 }
 
 // 添加保存
@@ -116,13 +127,19 @@ function save() {
     },
     success: function (data) {
       if (data.Status == 1) {
-        alert(data.Result);
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
         $("#myModal").modal('hide');
         hqhf(1)
       } else if (data.Status == 40001) {
-        top.location.href = "login.html";
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+        setTimeout(() => {
+          top.location.href = "login.html"
+        }, 500);
       } else {
-        alert(data.Result)
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
       }
     }
   })
@@ -133,16 +150,23 @@ function editsave() {
     url: mainurl + 'api/Admin/EditAdmin?ID=' + RoleID + '&Name=' + $("#Name").val() + '&Password=' + $.md5($("#Password").val()) + '&RoleID=' + IsLock + '&IsLock=false&Token=' + getCookie("token"),
     type: 'get',
     error: function () {
-      alert('数据加载错误');
+      var txt = "数据加载异常";
+      window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
     },
     success: function (data) {
       if (data.Status == 1) {
-        alert(data.Result);
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
         $("#myModal").modal('hide');
       } else if (data.Status == 40001) {
-        top.location.href = "login.html";
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+        setTimeout(() => {
+          top.location.href = "login.html"
+        }, 500);
       } else {
-        alert(data.Result)
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
       }
     }
   })
@@ -153,17 +177,24 @@ function delBtn() {
     url: mainurl + 'api/Admin/Del?Token=' + getCookie("token") + '&ID=' + RoleID,
     type: 'get',
     error: function () {
-      alert('数据加载错误');
+      var txt = "数据加载异常";
+      window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
     },
     success: function (data) {
       if (data.Status == 1) {
-        alert(data.Result);
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
         $("#myModal").modal('hide');
         hqhf(1)
       } else if (data.Status == 40001) {
-        top.location.href = "login.html";
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+        setTimeout(() => {
+          top.location.href = "login.html"
+        }, 500);
       } else {
-        alert(data.Result)
+        var txt = data.Result;
+        window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
       }
     }
   })

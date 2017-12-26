@@ -8,7 +8,7 @@
 	<link href="fonticon/iconfont.css" rel="stylesheet" type="text/css" />
 	<!-- <link rel="stylesheet" href="css/simplePagination.css" /> -->
 	<link rel="stylesheet" href="css/depart-account.css" />
-
+	<link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
 	<link href="css/base.css" rel="stylesheet" type="text/css" />
 	<link href="css/index.css" rel="stylesheet" type="text/css" />
 	<title>管理员管理</title>
@@ -20,6 +20,10 @@
 			border: 1px solid #63AEFF;
 			color: #fff;
 			border-radius: 5px;
+		}
+
+		input {
+			background-color: #fff!important;
 		}
 	</style>
 </head>
@@ -33,16 +37,16 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel">管理员管理</h4>
+						<h4 class="modal-title" style="text-align:center;font-weight: 600;" id="myModalLabel">管理员管理</h4>
 					</div>
 					<div class="modal-body addr">
 						<div>
-							<label>用户名：</label>
-							<input class="form-control" type="text" id="Name">
+							<label for="Name" style="font-weight: 600;">用户名</label>
+							<input class="form-control" type="text" id="Name" placeholder="请输入您的用户名">
 						</div>
 						<div>
-							<label>密码：</label>
-							<input class="form-control" type="password" autocomplete="off" id="Password">
+							<label for="Password" style="font-weight: 600;">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+							<input class="form-control" type="password" autocomplete="off" id="Password" placeholder="请输入您的密码">
 						</div>
 						<!-- <div>
 							<label>角色：</label>
@@ -59,9 +63,9 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-primary blocka" onclick="save()">提交</button>
-						<button type="button" class="btn btn-default guanbi" data-dismiss="modal">关闭</button>						
+						<button type="button" class="btn btn-default guanbi" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary none" onclick="editsave()">保存</button>
-						<button type="button" class="btn btn-default delete" onclick="delBtn()">删除</button>						
+						<button type="button" class="btn btn-default delete" onclick="delBtn()">删除</button>
 					</div>
 				</div>
 			</div>
@@ -86,7 +90,7 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.page.js"></script>
-
+	<script src="js/xcConfirm.js"></script>
 	<script src="js/jQuery.md5.js"></script>
 	<script src="js/gloab.js"></script>
 	<script src="js/manage.js"></script>

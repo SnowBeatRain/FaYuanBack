@@ -22,7 +22,8 @@ function upSmallImg() {
                 $(".guanbi1").show()
             }
             else {
-                alert(data.Result)
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
         }
     })
@@ -83,10 +84,14 @@ if (getCookie("InfoID")) {
                         })
                     }
                 } else if (data.Status == 40001) {
-                    alert(data.Result)
-                    window.location.href = "login.html"
+                    var txt = data.Result;
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                    setTimeout(() => {
+                        top.location.href = "login.html"
+                    }, 500);
                 } else {
-                    alert(data.Result)
+                    var txt = data.Result;
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                 }
             }
         });
@@ -115,7 +120,8 @@ if (getCookie("InfoID")) {
                     delCookie("InfoID")
                     window.location.href = "ActivityList.html"
                 } else {
-                    alert(data.Result)
+                    var txt = data.Result;
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                 }
             }
         });
@@ -144,10 +150,14 @@ else {
                     window.location.href = "ActivityList.html"
                 }
                 else if (data.Status == 40001) {
-                    alert(data.Result)
-                    window.location.href = "login.html"
+                    var txt = data.Result;
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                    setTimeout(() => {
+                        top.location.href = "login.html"
+                    }, 500);
                 } else {
-                    alert(data.Result)
+                    var txt = data.Result;
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                 }
             }
         });

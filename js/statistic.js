@@ -12,17 +12,17 @@ $(function () {
                                 <h4>用户数统计</h4>
                             </div>
                             <div class="statisNum">
-                                <p>
-                                    <span class="userNum">${data.Result.user.count}</span>人</p>
+                                <p class="userNum">
+                                    <span>${data.Result.user.count}</span>人</p>
                             </div>
                             <div class="statisFooter">
                                 <div>
-                                    <p>${data.Result.user.normal}人</p>
+                                    <p>${data.Result.user.locked}人</p>
                                     <p>已冻结</p>
                                 </div>
                                 <hr>
                                 <div>
-                                    <p>${data.Result.user.locked}人</p>
+                                    <p>${data.Result.user.normal}人</p>
                                     <p>未冻结</p>
                                 </div>
                             </div>
@@ -32,8 +32,8 @@ $(function () {
                                 <h4>建议统计</h4>
                             </div>
                             <div class="statisNum">
-                                <p>
-                                    <span class="feedNum">${data.Result.feedback.count}</span>条</p>
+                                <p class="feedNum">
+                                    <span>${data.Result.feedback.count}</span>条</p>
                             </div>
                             <div class="statisFooter">
                                 <div>
@@ -52,8 +52,8 @@ $(function () {
                                 <h4>图文统计</h4>
                             </div>
                             <div class="statisNum">
-                                <p>
-                                    <span class="activityNum">${data.Result.activity.count}</span>条</p>
+                                <p class="activityNum">
+                                    <span>${data.Result.activity.count}</span>篇</p>
                             </div>
                             <div class="statisFooter">
                                 <div>
@@ -68,8 +68,8 @@ $(function () {
                                 <h4>已发送短信</h4>
                             </div>
                             <div class="statisNum">
-                                <p>
-                                    <span class="msgNum">${data.Result.sms.count}</span>人</p>
+                                <p class="msgNum">
+                                    <span>${data.Result.sms.count}</span>条</p>
                             </div>
                             <div class="statisFooter">
                                 <div>
@@ -84,13 +84,21 @@ $(function () {
                         </li>
                             
                     `
-                    $("#allList").html(h)
+                $("#allList").html(h)
             } else if (data.Status == 40001) {
-                alert(data.Result)
-                window.location.href = "login.html"
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                setTimeout(() => {
+                    top.location.href = "login.html"
+                }, 500);
             } else {
-                alert(data.Result)
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
+        },
+        error: function () {
+            var txt = "数据加载异常";
+            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
         }
     });
 })
