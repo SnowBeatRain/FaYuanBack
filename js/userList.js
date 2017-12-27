@@ -15,6 +15,7 @@ $(function () {
         pageindex = location.href.split('pageindex=')[1];
     }
     hqhf(pageindex, keyword, starttime, endtime, status);
+    $(".downUrl").attr("href",mainurl+"images/%E7%94%A8%E6%88%B7%E5%AF%BC%E5%85%A5%E6%A8%A1%E6%9D%BF.xls")
 })
 
 function hqhf(pageindex, keyword, starttime, endtime, status) {

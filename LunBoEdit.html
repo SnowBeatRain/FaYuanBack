@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>编辑页面</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/depart-account.css" />
+    <link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
+    <link href="css/base.css" rel="stylesheet" type="text/css" />
+    <link href="css/index.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .bigBox {
+            width: 100%;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .left_box {
+            width: 400px;
+            background-color: #F5F6F7;
+            margin: 10px;
+            padding: 10px;
+            min-height: 320px;
+        }
+        .left_box div p{
+            position: relative;
+        }
+        .left_box input{
+            width: 350px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            opacity: 0;
+            z-index: 100;
+        }
+        .left_box p .upImg1{
+            width: 350px;
+            height: 200px;            
+            position: absolute;
+            top: 0;
+        }
+        .left_box div {
+            margin-bottom: 20px;
+        }
+        .foot_box {
+            margin: 0 20px;
+            padding: 0 20px;
+            width: 400px;
+            text-align: center
+        }
+
+        .foot_box button {
+            cursor: pointer;
+            height: 35px;
+            color: #fff;
+            width: 70px;
+            background-color: #0161BB;
+            border-color: #0161BB;
+            border: 1px solid #0161BB;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="productHandle" class="content">
+        <a style="display:block;margin:10px 0;color:#63AEFF" href="javascript:history.back();">
+            返回上一层
+            <br>
+        </a>
+        <div class="bigBox">
+            <div class="left_box">
+                <div>
+                    <label for="">首页轮播</label>
+                    <br>
+                    <p>
+                        <input type="file" class="upImg_small" onchange="upSmallImg()">
+                        <img class="upImg upImg1" src="image/tu.png" alt="">
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="foot_box" style="">
+            <button onclick="savePro()">提交</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/xcConfirm.js"></script>
+    <script src="layer/layer.js"></script>
+
+    <script src="js/gloab.js"></script>
+</body>
+
+<script src="js/LunBoEdit.js"></script>
+
+</html>

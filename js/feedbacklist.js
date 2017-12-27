@@ -125,7 +125,7 @@ function dealBtn(e) {
     var name = $(e).parents("tr").attr("name");
     $(".noFeedPeople").html(AllList[name].UserName)
     $(".noFeedPhone").html(AllList[name].UserPhone)
-    $(".noFeedText").html(AllList[name].Title)
+    $(".noFeedText").html(AllList[name].Content)
 
 }
 $(".Deal").on("click", function () {
@@ -190,8 +190,8 @@ function alreadyDeal(e) {
     var name = $(e).parents("tr").attr("name");
     $(".isFeedPeople").html(AllList[name].UserName)
     $(".isFeedPhone").html(AllList[name].UserPhone)
-    $(".isFeedText").html(AllList[name].Title)
+    $(".isFeedText").html(AllList[name].Content)
     $(".DealTime").html(AllList[name].DealTime.split("T")[0])
     $(".DealWay").html(AllList[name].DealWay)
-    $(".DealNote").html(AllList[name].DealNote)
+    $(".DealNote").html(AllList[name].DealNote == "-1"?"":AllList[name].DealNote)
 }

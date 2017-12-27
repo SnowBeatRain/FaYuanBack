@@ -1192,9 +1192,10 @@ var DateFormatter;
 		showApplyButton: false
 	};
 
+	// 修改默认中文
 	var dateHelper = null,
-		globalLocaleDefault = 'en',
-		globalLocale = 'en';
+		globalLocaleDefault = 'zh',
+		globalLocale = 'zh';
 
 	var dateFormatterOptionsDefault = {
 		meridiem: ['AM', 'PM']

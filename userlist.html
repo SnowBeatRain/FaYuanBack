@@ -25,6 +25,21 @@
             width: 70px;
         }
 
+        .downBtn {
+            cursor: pointer;
+            height: 35px;
+            color: #0161BB;
+            background-color: #fff;
+            border-color: #0161BB;
+            border: 1px solid #0161BB;
+            margin: 0 15px;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 14px;
+            position: absolute;
+            right: 100px;
+        }
+
         ul li {
             margin-right: 20px;
         }
@@ -62,9 +77,13 @@
             <li>
                 <button type="button" class="reset-button" onclick="ResetOrderIndex()">重置</button>
             </li>
+
             <button id="fileIn" type="button" class="import add-button btn-add">导入
                 <input id="file" type="file" onchange="FileIn()" />
             </button>
+            <a class="downUrl" href="">
+                <button type="button" class="import downBtn">获取模版</button>
+            </a>
         </ul>
         <table class="table table-bordered table-hover" id="feedBacklist">
             <thead>
