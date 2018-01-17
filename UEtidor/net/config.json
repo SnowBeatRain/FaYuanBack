@@ -8,7 +8,8 @@
     "imageCompressEnable": true, /* 是否压缩图片,默认是true */
     "imageCompressBorder": 1600, /* 图片压缩最长边限制 */
     "imageInsertAlign": "none", /* 插入的图片浮动方式 */
-    "imageUrlPrefix": "http://192.168.1.132:8090/net/", /* 图片访问路径前缀 */
+    // http://demo.nbxuanma.com/zyj/baoxian_sjpt/UEtidor/net/upload/image/20170811/6363805738103121243541826.png
+    "imageUrlPrefix": "http://demo.nbxuanma.com/zyj/baoxian_sjpt/UEtidor/net/", /* 图片访问路径前缀 */
 
 
     "imagePathFormat": "upload/image/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */

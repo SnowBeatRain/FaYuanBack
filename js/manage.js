@@ -123,7 +123,8 @@ function save() {
     url: mainurl + 'api/Admin/Add?Name=' + $("#Name").val() + '&Password=' + $.md5($("#Password").val()) + '&Token=' + getCookie("token"),
     type: 'get',
     error: function () {
-      alert('服务器异常');
+      var txt = "数据加载异常";
+      window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
     },
     success: function (data) {
       if (data.Status == 1) {
@@ -147,7 +148,7 @@ function save() {
 
 function editsave() {
   $.ajax({
-    url: mainurl + 'api/Admin/EditAdmin?ID=' + RoleID + '&Name=' + $("#Name").val() + '&Password=' + $.md5($("#Password").val()) + '&RoleID=' + IsLock + '&IsLock=false&Token=' + getCookie("token"),
+    url: mainurl + 'api/Admin/Edit?ID=' + RoleID + '&Name=' + $("#Name").val() + '&Password=' + $.md5($("#Password").val()) + '&RoleID=' + roleID + '&IsLock=false&Token=' + getCookie("token"),
     type: 'get',
     error: function () {
       var txt = "数据加载异常";
@@ -158,6 +159,7 @@ function editsave() {
         var txt = data.Result;
         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
         $("#myModal").modal('hide');
+        hqhf(1)
       } else if (data.Status == 40001) {
         var txt = data.Result;
         window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);

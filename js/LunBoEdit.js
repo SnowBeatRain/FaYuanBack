@@ -3,6 +3,8 @@ var SmallImgUrl = ""
 // 上传图片
 function upSmallImg() {
     var formdata = new FormData();
+    var size = $(".upImg_small")[0].files[0].size; 
+    console.log(size/1024)
     formdata.append("file", $(".upImg_small")[0].files[0]);//获取文件法二
     var lay = layer.load();
     $.ajax({

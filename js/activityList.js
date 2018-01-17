@@ -33,14 +33,57 @@ function hqhf(pageindex, keyword, starttime, endtime) {
                         <td>${list[i].CreateTime.split(".")[0].replace("T", " ")}</td>
                         <td>${list[i].ViewCount}</td>
                         <td>
+                            <button class='${list[i].IsShow ? ' isShow' : 'noShow'}'} > ${list[i].IsShow ? '是' : '否'} <button>
+                        </td >
+                    <td><button class="sendMsg" onclick="sendMsg(this)">发送<button></td>
+                        <td>
                             <img src="image/xiangqing.png" alt="" onclick="editInfo(this)">
-                            <img src="image/shanchu.png" onclick="DeleteInfo(this)" alt="">
+                                <img src="image/shanchu.png" onclick="DeleteInfo(this)" alt="">
                         </td>
                     </tr>
-                    `
+                            `
                 }
                 $("#feedBacklist tbody").html(li)
                 getpage(pageindex, page, keyword, starttime, endtime);
+                // 展示
+                $(".isShow").on('click', '', function (e) {
+                    var id = $(e.target).parents("tr").attr("id")
+                    $.ajax({
+                        type: "get",
+                        url: mainurl + "api/Activity/ShowSwitch?Token=" + getCookie("token") + "&ID=" + id,
+                        dataType: "json",
+                        async: true,
+                        success: function (data) {
+                            if (data.Status == 1) {
+                                var txt = data.Result;
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                                hqhf(pageindex, keyword, starttime, endtime)
+                            } else {
+                                var txt = data.Result;
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                            }
+                        }
+                    });
+                })
+                $(".noShow").on('click', '', function (e) {
+                    var id = $(e.target).parents("tr").attr("id")
+                    $.ajax({
+                        type: "get",
+                        url: mainurl + "api/Activity/ShowSwitch?Token=" + getCookie("token") + "&ID=" + id,
+                        dataType: "json",
+                        async: true,
+                        success: function (data) {
+                            if (data.Status == 1) {
+                                var txt = data.Result;
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                                hqhf(pageindex, keyword, starttime, endtime)
+                            } else {
+                                var txt = data.Result;
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                            }
+                        }
+                    });
+                })
             } else if (data.Status == 40001) {
                 var txt = data.Result;
                 window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
@@ -131,7 +174,26 @@ function addInfo() {
 }
 // 修改
 function editInfo(e) {
-    var id = $(e).parents("tr").attr("id")
+
     setCookie("InfoID", $(e).parents("tr").attr("id"), "d30")
     window.location.href = "InfoEdit.html"
+}
+// 发短信
+function sendMsg(e) {
+    var id = $(e).parents("tr").attr("id")
+    $.ajax({
+        type: "post",
+        url: mainurl + "api/Activity/SendSMS?Token=" + getCookie("token") + "&ID=" + id,
+        dataType: "json",
+        async: true,
+        success: function (data) {
+            if (data.Status == 1) {
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+            } else {
+                var txt = data.Result;
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+            }
+        }
+    });
 }

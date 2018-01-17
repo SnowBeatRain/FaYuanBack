@@ -25,6 +25,22 @@
             width: 70px;
         }
 
+        .addBtn {
+            cursor: pointer;
+            height: 35px;
+            width: 70px;
+            color: #0161BB;
+            background-color: #fff;
+            border-color: #0161BB;
+            border: 1px solid #0161BB;
+            margin: 0 15px;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 14px;
+            position: absolute;
+            right: 80px;
+        }
+
         .downBtn {
             cursor: pointer;
             height: 35px;
@@ -37,11 +53,32 @@
             padding: 5px 10px;
             font-size: 14px;
             position: absolute;
-            right: 100px;
+            right: 160px;
+        }
+
+        .sendmsg {
+            cursor: pointer;
+            height: 35px;
+            color: #0161BB;
+            background-color: #fff;
+            border-color: #0161BB;
+            border: 1px solid #0161BB;
+            margin: 0 15px;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 14px;
+            position: absolute;
+            right: 0;
         }
 
         ul li {
             margin-right: 20px;
+        }
+
+        .formInput {
+            width: calc(100% - 85px);
+            display: inline-block;
+            border: none;
         }
 
         .noFreez {
@@ -72,7 +109,7 @@
 
             </li>
             <li>
-                <button type="button" class="ask-button" onclick="KeySearch()">查询</button>
+                <button type="button" style="margin:0" class="ask-button" onclick="KeySearch()">查询</button>
             </li>
             <li>
                 <button type="button" class="reset-button" onclick="ResetOrderIndex()">重置</button>
@@ -81,13 +118,78 @@
             <button id="fileIn" type="button" class="import add-button btn-add">导入
                 <input id="file" type="file" onchange="FileIn()" />
             </button>
+            <button class="addBtn" data-toggle="modal" data-target="#myModal" onclick="addmanage()">添加</button>
+
             <a class="downUrl" href="">
                 <button type="button" class="import downBtn">获取模版</button>
             </a>
+            <!-- 模态框添加（Modal） -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" style="text-align:center;font-weight: 600;" id="myModalLabel">添加用户</h4>
+                        </div>
+                        <div class="modal-body addr">
+                            <div>
+                                <label for="Name" style="font-weight: 600;">姓&nbsp;&nbsp;&nbsp;&nbsp;名</label>
+                                <input class="form-control formInput" type="text" id="Name" placeholder="请输入姓名">
+                            </div>
+                            <div>
+                                <label for="Password" style="font-weight: 600;">手机号</label>
+                                <input class="form-control formInput" type="text" autocomplete="off" id="Phone" placeholder="请输入手机号">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary blocka" onclick="save()">提交</button>
+                            <button type="button" class="btn btn-default guanbi" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary none" onclick="editsave()">保存</button>
+                            <button type="button" class="btn btn-default delete" onclick="delBtn()">删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 模态框短信（Modal） -->
+            <div class="modal fade" id="sendMsg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" style="text-align:center;font-weight: 600;" id="myModalLabel">短信内容</h4>
+                        </div>
+                        <div class="modal-body addr">
+                            <div>
+                                <textarea class="form-control" id="msgContent" style="resize:none;height:100px"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary blocka" onclick="sendImsg()">发送</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </ul>
         <table class="table table-bordered table-hover" id="feedBacklist">
+            <div>
+                显示数量
+                <select onchange="changePageSize()" id="selectSize" class="form-control" style="width:100px;display:inline-block; ">
+                    <option value="10">10条</option>
+                    <option value="50">50条</option>
+                    <option value="100">100条</option>
+                    <option value="200">200条</option>
+                    <option value="500">500条</option>
+                    <option value="1000">1000条</option>                    
+                </select>
+                <button class="import sendmsg" data-toggle="modal" data-target="#sendMsg" onclick="openMsgModal()">发送短信</button>
+            </div>
             <thead>
                 <tr style="height:50px;background-color:#EAEAEA;">
+                    <th>
+                        <input type="checkbox" id="checkAll" />
+                    </th>
                     <th>姓名</th>
                     <th>手机号</th>
                     <th>导入时间</th>
@@ -95,8 +197,7 @@
                     <th>操作</th>
                 </tr>
             </thead>
-            <tbody>
-
+            <tbody id="checkList">
             </tbody>
         </table>
     </div>
@@ -126,6 +227,8 @@
                 $('#endTime').val(s2);
             }
         });
+
+
     });
 </script>
 <script src="js/userList.js"></script>

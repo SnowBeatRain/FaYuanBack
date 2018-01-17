@@ -51,8 +51,6 @@ function hqhf(pageindex, keyword, starttime, endtime, status) {
                         <tr id="${list[i].ID}" name="${i}">
                             <td>${list[i].UserName}</td>
                             <td>${list[i].UserPhone}</td>
-                            <td>${list[i].ContactName}</td>
-                            <td>${list[i].ContactPhone}</td>
                             <td>${list[i].CreateTime.split(".")[0].replace("T", " ")}</td>
                             <td>${list[i].Title}</td>
                             <td>
@@ -126,7 +124,15 @@ function dealBtn(e) {
     $(".noFeedPeople").html(AllList[name].UserName)
     $(".noFeedPhone").html(AllList[name].UserPhone)
     $(".noFeedText").html(AllList[name].Content)
-
+    var imgList = AllList[name].Images
+    var l = ""
+    for (let j = 0; j < imgList.length; j++) {
+        ;
+        l += `<a href="${imgList[j]}"  target="_blank">
+                <img src="${imgList[j]}" alt="">
+                </a>`
+    }
+    $(".noFeedImg").html(l)
 }
 $(".Deal").on("click", function () {
     var DealTime = $("#DealTime").val()
@@ -193,5 +199,14 @@ function alreadyDeal(e) {
     $(".isFeedText").html(AllList[name].Content)
     $(".DealTime").html(AllList[name].DealTime.split("T")[0])
     $(".DealWay").html(AllList[name].DealWay)
-    $(".DealNote").html(AllList[name].DealNote == "-1"?"":AllList[name].DealNote)
+    $(".DealNote").html(AllList[name].DealNote == "-1" ? "" : AllList[name].DealNote)
+    var imgList = AllList[name].Images
+    var l = ""
+    for (let j = 0; j < imgList.length; j++) {
+        ;
+        l += `<a href="${imgList[j]}"  target="_blank">
+                <img src="${imgList[j]}" alt="">
+                </a>`
+    }
+    $(".isFeedImg").html(l)
 }

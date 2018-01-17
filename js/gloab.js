@@ -1,5 +1,5 @@
 // var mainurl = "http://192.168.1.132/Court/"
-var mainurl = "http://nbfyht.webuynb.com/"
+var mainurl = "http://nbfyapi.webuynb.com/"
 /*以下是存储cookie的方法*/
 function setCookie(name, value, time) {
     var strsec = getsec(name);

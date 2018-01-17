@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="css/xcConfirm.css" />
     <link href="css/base.css" rel="stylesheet" type="text/css" />
     <link href="css/index.css" rel="stylesheet" type="text/css" />
-
     <style>
         .bigBox {
             width: 100%;
@@ -93,12 +92,16 @@
             cursor: pointer;
             height: 35px;
             color: #fff;
-            width: 70px;
+            padding: 0 15px;
             background-color: #0161BB;
             border-color: #0161BB;
             border: 1px solid #0161BB;
             border-radius: 4px;
             font-size: 16px;
+        }
+
+        .detailFooter {
+            text-align: center;
         }
 
         .detailFooter button {
@@ -111,6 +114,10 @@
             border: 1px solid #0161BB;
             border-radius: 4px;
             font-size: 16px;
+        }
+
+        #edui1 {
+            width: 100%!important;
         }
     </style>
 </head>
@@ -128,22 +135,27 @@
                     <input type="text" class="form-control Name" placeholder="请输入商品名">
                 </div>
                 <div>
-                    <label for="">是否短信推送</label>
+                    <label for="">链接地址</label>
                     <br>
-                    <span>是</span>
+                    <span>内链</span>
                     <img class="shangjia" onclick="shangjia()" src="image/yes.png" alt="">
-                    <span style="margin-left:20px;">否</span>
+                    <span style="margin-left:20px;">外链</span>
                     <img class="weishangjia" onclick="weishangjia()" src="image/no.png" alt="">
                 </div>
-                <div>
-                    <label for="">百度编辑器</label>
+                <div class="linkIn">
+                    <label for="">内链编辑器</label>
                     <br>
                     <button class="baiduEdit" onclick="tuwenCh()">正文内容</button>
+                </div>
+                <div class="linkOut">
+                    <label for="">外链地址</label>
+                    <input type="text" class="form-control Link" placeholder="请输入外链链接">
                 </div>
             </div>
             <div class="right_box">
                 <div>
-                    <label for="">产品主图</label>
+                    <label for="">展示图</label>
+                    <span style="float:right">（建图片大小小于1M）</span>
                     <br>
                     <p>
                         <input type="file" class="upImg_small" onchange="upSmallImg()">
@@ -154,7 +166,8 @@
             </div>
         </div>
         <div class="foot_box" style="">
-            <button onclick="savePro()">提交</button>
+            <button onclick="savePro()">保存</button>
+            <button class="sendMsg" style="margin-left:20px; padding: 0px 15px;" onclick="sendMsg()">发送短信</button>
         </div>
     </div>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -163,9 +176,15 @@
     <script src="layer/layer.js"></script>
 
     <script src="js/gloab.js"></script>
-    <div id="detail_box1">
+    <div id="detail_box1" style="height:300px;">
         <!-- 加载编辑器的容器 -->
-        <script id="container1" name="content" type="text/plain">这里写你的初始化内容</script>
+        <a style="display:block;padding:10px 0 0 20%;color:#63AEFF" onclick="backEdit()">
+            <br> 返回编辑
+            <br>
+
+        </a>
+        <p style="padding:10px 0 0 20%;color:red;">温馨提示：插入图片的宽度为500px!</p>
+        <script id="container1" name="content" style="width:60%;height:450px;margin:15px auto;" type="text/plain">这里写你的初始化内容</script>
         <div class="detailFooter">
             <button onclick="aaa()">保存</button>
         </div>
@@ -182,11 +201,16 @@
 <script>
     $("#productHandle").show()
     $("#detail_box1").hide()
+    $(".linkOut").hide()
 
     function tuwenCh() {
         $("#productHandle").hide()
         $("#detail_box1").show()
+    }
 
+    function backEdit() {
+        $("#productHandle").show()
+        $("#detail_box1").hide()
     }
 </script>
 <script>

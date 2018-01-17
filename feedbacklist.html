@@ -25,8 +25,23 @@
         ul li {
             margin-right: 20px;
         }
-        .closeBtn{
+
+        .closeBtn {
             background-color: #fff!important;
+        }
+
+        .imgBox {
+            margin: 0!important;
+            border: none!important;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            height: 120px;
+        }
+
+        .imgBox img {
+            width: 100px;
+            /* height: 100px; */
         }
     </style>
 </head>
@@ -66,8 +81,8 @@
                 <tr style="height:50px;background-color:#EAEAEA;">
                     <th>用户姓名</th>
                     <th>用户手机号</th>
-                    <th>反馈联系人</th>
-                    <th>反馈联系人手机号</th>
+                    <!-- <th>反馈联系人</th> -->
+                    <!-- <th>反馈联系人手机号</th> -->
                     <th>建议时间</th>
                     <th>建议标题</th>
                     <th>状态</th>
@@ -96,6 +111,10 @@
                         <p class="contentText noFeedText" style="text-indent:2em;text-align:left;">
                             kdfskfjklsdjfksjkfdsljfksjfjsl扣水电费了看电视剧雷锋精神了丰盛的上岛咖啡但是但是
                         </p>
+                        <p style="text-align:left;">反馈图片：</p>
+
+                        <div class="imgBox noFeedImg" >
+                        </div>
                     </div>
                     <div>
                         <label>
@@ -129,12 +148,15 @@
                         <p style="text-align:left;">
                             <span>反馈人：
                                 <span style="margin-right:20px;" class="isFeedPeople">张三</span>手机号：
-                                <span  class="isFeedPhone">15000000000</span>
+                                <span class="isFeedPhone">15000000000</span>
                             </span>
                         </p>
                         <p class="contentText isFeedText" style="text-indent:2em;text-align:left;">
                             kdfskfjklsdjfksjkfdsljfksjfjsl扣水电费了看电视剧雷锋精神了丰盛的上岛咖啡但是但是
                         </p>
+                        <p style="text-align:left;">反馈图片：</p>
+                        <div class="imgBox isFeedImg">
+                        </div>
                     </div>
                     <h3>处理方式</h3>
                     <div>
@@ -193,7 +215,7 @@
 <script src="js/feedbacklist.js"></script>
 <script>
     $('#DealTime').datetimepicker({
-        language:  'zh',  
+        language: 'zh',
         formatTime: 'H:i',
         formatDate: 'd.m.Y',
         step: 5

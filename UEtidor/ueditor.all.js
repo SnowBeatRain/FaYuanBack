@@ -24473,7 +24473,6 @@
                                 loader.setAttribute('_src', link);
                                 loader.setAttribute('title', json.title || '');
                                 loader.setAttribute('alt', json.original || '');
-                                loader.setAttribute('style','max-width:600px;');                            
                                 loader.removeAttribute('id');
                                 domUtils.removeClasses(loader, 'loadingclass');
                             } else {

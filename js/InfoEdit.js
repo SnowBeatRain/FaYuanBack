@@ -29,22 +29,26 @@ function upSmallImg() {
     })
 }
 
-// 是否短信推送
-var sendMsg = true
+// 是否内链
+var linkType = 0   //内链
 function shangjia() {
     $(".shangjia").attr("src", "image/yes.png")
     $(".weishangjia").attr("src", "image/no.png")
-    sendMsg = true
+    $(".linkIn").show()
+    $(".linkOut").hide()
+    linkType = 0
 }
 function weishangjia() {
     $(".weishangjia").attr("src", "image/yes.png")
     $(".shangjia").attr("src", "image/no.png")
-    sendMsg = false
+    linkType = 1
+    $(".linkOut").show()
+    $(".linkIn").hide()
 }
-
 
 // 判断是否是点击操作进入
 if (getCookie("InfoID")) {
+    $(".sendMsg").show()
     // 获取详情
     getDetail()
     function getDetail() {
@@ -56,14 +60,19 @@ if (getCookie("InfoID")) {
             success: function (data) {
                 if (data.Status == 1) {
                     $(".Name").val(data.Result.Title)
-                    sendMsg = false
+                    $(".Link").val(data.Result.Link)
+                    
                     // 判断是否短信
-                    if (sendMsg) {
+                    if (data.Result.Type == 0) {  //内链
                         $(".shangjia").attr("src", "image/yes.png")
                         $(".weishangjia").attr("src", "image/no.png")
+                        $(".linkOut").hide()
+                        $(".linkIn").show()
                     } else {
                         $(".shangjia").attr("src", "image/no.png")
                         $(".weishangjia").attr("src", "image/yes.png")
+                        $(".linkOut").show()
+                        $(".linkIn").hide()
                     }
                     // 判断大小图
                     if (data.Result.Url) {
@@ -100,25 +109,91 @@ if (getCookie("InfoID")) {
     // 编辑提交
     function savePro() {
         var Name = $(".Name").val()
+        var Link = $(".Link").val().trim()
         var Detail = detail1
         var Image = SmallImgUrl
+        if (linkType == 1) {
+            if (Name && SmallImgUrl && Link) {
+                var reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
+                if (!reg.test(Link)) {
+                    var txt = "请检查外链是否正确";
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                } else {
+                    $.ajax({
+                        type: "post",
+                        url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
+                        dataType: "json",
+                        data: {
+                            "ID": getCookie("InfoID"),
+                            "Title": Name,
+                            "Url": SmallImgUrl,
+                            "Type": linkType,
+                            "Link": Link,
+                            "IsSend": false,
+                            "Content": ""
+                        },
+                        async: true,
+                        success: function (data) {
+                            if (data.Status == 1) {
+
+                                delCookie("InfoID")
+                                window.location.href = "ActivityList.html"
+                            } else {
+                                var txt = data.Result;
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                            }
+                        }
+                    });
+                }
+
+            } else {
+                var txt = "请检查是否填写完整";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+            }
+        } else {
+            if (Name && SmallImgUrl && Detail) {
+                $.ajax({
+                    type: "post",
+                    url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
+                    dataType: "json",
+                    data: {
+                        "ID": getCookie("InfoID"),
+                        "Title": Name,
+                        "Url": SmallImgUrl,
+                        "Type": linkType,
+                        "Link": "",
+                        "IsSend": false,
+                        "Content": Detail
+                    },
+                    async: true,
+                    success: function (data) {
+                        if (data.Status == 1) {
+
+                            delCookie("InfoID")
+                            window.location.href = "ActivityList.html"
+                        } else {
+                            var txt = data.Result;
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                        }
+                    }
+                });
+            } else {
+                var txt = "请检查是否填写完整";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+            }
+        }
+
+    }
+    function sendMsg() {
         $.ajax({
             type: "post",
-            url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
+            url: mainurl + "api/Activity/SendSMS?Token=" + getCookie("token") + "&ID=" + getCookie("InfoID"),
             dataType: "json",
-            data: {
-                "ID": getCookie("InfoID"),
-                "Title": Name,
-                "Url": SmallImgUrl,
-                "IsSend": sendMsg,
-                "Content": Detail
-            },
             async: true,
             success: function (data) {
                 if (data.Status == 1) {
-
-                    delCookie("InfoID")
-                    window.location.href = "ActivityList.html"
+                    var txt = data.Result;
+                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
                 } else {
                     var txt = data.Result;
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
@@ -128,39 +203,90 @@ if (getCookie("InfoID")) {
     }
 }
 else {
+    $(".sendMsg").hide()
     // 添加提交
     function savePro() {
         var Name = $(".Name").val()
         var Detail = detail1 == "" ? encodeURIComponent("这里你的初始化内容") : detail1
+        var Link = $(".Link").val().trim()
         var Image = SmallImgUrl
-        $.ajax({
-            type: "post",
-            url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
-            dataType: "json",
-            data: {
-                // "ID": ,
-                "Title": Name,
-                "Url": SmallImgUrl,
-                "IsSend": sendMsg,
-                "Content": Detail
-            },
-            async: true,
-            success: function (data) {
-                if (data.Status == 1) {
-                    window.location.href = "ActivityList.html"
-                }
-                else if (data.Status == 40001) {
-                    var txt = data.Result;
+        if (linkType == 1) {
+            if (Name && SmallImgUrl && Link) {
+                var reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
+                if (!reg.test(Link)) {
+                    var txt = "请检查外链是否正确";
                     window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
-                    setTimeout(() => {
-                        top.location.href = "login.html"
-                    }, 500);
                 } else {
-                    var txt = data.Result;
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                    $.ajax({
+                        type: "post",
+                        url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
+                        dataType: "json",
+                        data: {
+                            "Title": Name,
+                            "Url": SmallImgUrl,
+                            "Type": linkType,
+                            "Link": Link,
+                            "IsSend": false,
+                            "Content": ""
+                        },
+                        async: true,
+                        success: function (data) {
+                            if (data.Status == 1) {
+                                window.location.href = "ActivityList.html"
+                            }
+                            else if (data.Status == 40001) {
+                                var txt = data.Result;
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                                setTimeout(() => {
+                                    top.location.href = "login.html"
+                                }, 500);
+                            } else {
+                                var txt = data.Result;
+                                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                            }
+                        }
+                    });
                 }
+            } else {
+                var txt = "请检查是否填写完整";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
             }
-        });
+        } else {
+            if (Name && SmallImgUrl && Detail) {
+                $.ajax({
+                    type: "post",
+                    url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
+                    dataType: "json",
+                    data: {
+                        "Title": Name,
+                        "Url": SmallImgUrl,
+                        "Type": linkType,
+                        "Link": "",
+                        "IsSend": false,
+                        "Content": Detail
+                    },
+                    async: true,
+                    success: function (data) {
+                        if (data.Status == 1) {
+                            window.location.href = "ActivityList.html"
+                        }
+                        else if (data.Status == 40001) {
+                            var txt = data.Result;
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                            setTimeout(() => {
+                                top.location.href = "login.html"
+                            }, 500);
+                        } else {
+                            var txt = data.Result;
+                            window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+                        }
+                    }
+                });
+            } else {
+                var txt = "请检查是否填写完整";
+                window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
+            }
+        }
     }
 }
 
