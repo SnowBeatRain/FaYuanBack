@@ -45,6 +45,7 @@ function hqhf(pageindex, keyword, starttime, endtime) {
                 }
                 $("#feedBacklist tbody").html(li)
                 getpage(pageindex, page, keyword, starttime, endtime);
+<<<<<<< HEAD
                 // 展示
                 $(".isShow").on('click', '', function (e) {
                     var id = $(e.target).parents("tr").attr("id")
@@ -84,6 +85,8 @@ function hqhf(pageindex, keyword, starttime, endtime) {
                         }
                     });
                 })
+=======
+>>>>>>> 92f8ed945e88f818bd4f7b7253341f9ac2f4ee47
             } else if (data.Status == 40001) {
                 var txt = data.Result;
                 window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
