@@ -210,7 +210,6 @@ else {
         var Detail = detail1 == "" ? encodeURIComponent("这里你的初始化内容") : detail1
         var Link = $(".Link").val().trim()
         var Image = SmallImgUrl
-<<<<<<< HEAD
         if (linkType == 1) {
             if (Name && SmallImgUrl && Link) {
                 var reg = /(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/;
@@ -247,33 +246,6 @@ else {
                             }
                         }
                     });
-=======
-        $.ajax({
-            type: "post",
-            url: mainurl + "api/Activity/AddOrUpdate?Token=" + getCookie("token"),
-            dataType: "json",
-            data: {
-                // "ID": ,
-                "Title": Name,
-                "Url": SmallImgUrl,
-                "IsSend": sendMsg,
-                "Content": Detail
-            },
-            async: true,
-            success: function (data) {
-                if (data.Status == 1) {
-                    window.location.href = "ActivityList.html"
-                }
-                else if (data.Status == 40001) {
-                    var txt = data.Result;
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
-                    setTimeout(() => {
-                        top.location.href = "login.html"
-                    }, 500);
-                } else {
-                    var txt = data.Result;
-                    window.wxc.xcConfirm(txt, window.wxc.xcConfirm.typeEnum.info);
->>>>>>> 92f8ed945e88f818bd4f7b7253341f9ac2f4ee47
                 }
             } else {
                 var txt = "请检查是否填写完整";
