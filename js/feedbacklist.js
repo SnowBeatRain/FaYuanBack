@@ -196,11 +196,7 @@ function alreadyDeal(e) {
     var name = $(e).parents("tr").attr("name");
     $(".isFeedPeople").html(AllList[name].UserName)
     $(".isFeedPhone").html(AllList[name].UserPhone)
-<<<<<<< HEAD
     $(".isFeedText").html(AllList[name].Content)
-=======
-    $(".isFeedText").html(AllList[name].Title)
->>>>>>> 92f8ed945e88f818bd4f7b7253341f9ac2f4ee47
     $(".DealTime").html(AllList[name].DealTime.split("T")[0])
     $(".DealWay").html(AllList[name].DealWay)
     $(".DealNote").html(AllList[name].DealNote == "-1" ? "" : AllList[name].DealNote)

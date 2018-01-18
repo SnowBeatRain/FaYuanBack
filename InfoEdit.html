@@ -132,7 +132,7 @@
             <div class="left_box">
                 <div>
                     <label for="">标题</label>
-                    <input type="text" class="form-control Name" placeholder="请输入商品名">
+                    <input type="text" class="form-control Name" placeholder="请输入工作动态标题">
                 </div>
                 <div>
                     <label for="">链接地址</label>
@@ -166,7 +166,8 @@
             </div>
         </div>
         <div class="foot_box" style="">
-            <button onclick="savePro()">保存</button>
+            <button class="submitBtn" onclick="subPro()">提交</button>
+            <button class="saveBtn" onclick="savePro()">保存</button>
             <button class="sendMsg" style="margin-left:20px; padding: 0px 15px;" onclick="sendMsg()">发送短信</button>
         </div>
     </div>
@@ -176,12 +177,11 @@
     <script src="layer/layer.js"></script>
 
     <script src="js/gloab.js"></script>
-    <div id="detail_box1" style="height:300px;">
+    <div id="detail_box1" style="height:300px;display:none;">
         <!-- 加载编辑器的容器 -->
         <a style="display:block;padding:10px 0 0 20%;color:#63AEFF" onclick="backEdit()">
             <br> 返回编辑
             <br>
-
         </a>
         <p style="padding:10px 0 0 20%;color:red;">温馨提示：插入图片的宽度为500px!</p>
         <script id="container1" name="content" style="width:60%;height:450px;margin:15px auto;" type="text/plain">这里写你的初始化内容</script>

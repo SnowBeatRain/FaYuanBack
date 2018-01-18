@@ -33,9 +33,9 @@ function hqhf(pageindex, keyword, starttime, endtime) {
                         <td>${list[i].CreateTime.split(".")[0].replace("T", " ")}</td>
                         <td>${list[i].ViewCount}</td>
                         <td>
-                            <button class='${list[i].IsShow ? ' isShow' : 'noShow'}'} > ${list[i].IsShow ? '是' : '否'} <button>
+                            <span class='${list[i].IsShow ? ' isShow' : 'noShow'}'} > ${list[i].IsShow ? '是' : '否'} <span>
                         </td >
-                    <td><button class="sendMsg" onclick="sendMsg(this)">发送<button></td>
+                        <td><span class="sendMsg" onclick="sendMsg(this)">发送<span></td>
                         <td>
                             <img src="image/xiangqing.png" alt="" onclick="editInfo(this)">
                                 <img src="image/shanchu.png" onclick="DeleteInfo(this)" alt="">
@@ -174,7 +174,6 @@ function addInfo() {
 }
 // 修改
 function editInfo(e) {
-
     setCookie("InfoID", $(e).parents("tr").attr("id"), "d30")
     window.location.href = "InfoEdit.html"
 }
